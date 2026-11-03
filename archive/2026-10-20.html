@@ -1,0 +1,552 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">20 октября 2026, 09:28 &middot; окно поиска с 17 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">96</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">7</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">11</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">7</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 3 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172047">О внесении изменений в Методику по разработке и применению нормативов накладных расходов при определении сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства, утвержденную приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 21 декабря 2020 г. № 812/пр</a></h3>
+  <p class="card-annotation">Минстрой России вносит изменения в Методику по разработке и применению нормативов накладных расходов при определении сметной стоимости строительства (приказ № 812/пр). Касается ценообразования в строительстве.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 19.10.26 · 01/02/10-26/00172047</div>
+  
+  <div class="card-tags">сметное нормирование и ценообразование в сфере градостроительной деятельности; нормативы затрат; сметная стоимость; накладные расходы</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 3 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172043">О внесении изменений в Методику определения сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства, работ по сохранению объектов культурного наследия (памятников истории и культуры) народов Российской Федерации на территории Российской Федерации, утвержденную приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр</a></h3>
+  <p class="card-annotation">Минстрой России вносит изменения в Методику определения сметной стоимости строительства, реконструкции, капремонта и сноса (приказ № 421/пр). Касается сметного ценообразования.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 19.10.26 · 01/02/10-26/00172043</div>
+  
+  <div class="card-tags">строительство; сметная стоимость; ценообразование в строительстве</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_546936/">&lt;Письмо&gt; Минстроя России от 08.10.2026 N 23599-ОГ/04 &lt;По вопросам предоставления коммунальных услуг населению МКД&gt;</a></h3>
+  <p class="card-annotation">Минстрой: предоставление такой коммунальной услуги, как водоотведение поверхностных сточных вод, законодательством не предусмотрено Согласно подпункту &quot;в&quot; пункта 4 Правил предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов, утвержденных Постановлением Правительства РФ от 6 мая 2011 г. N 354, потребителю может быть предоставлена коммунальная услуга по водоотведению, то есть отвод бытовых стоков из жилого дома (домовладения), из жилых и нежилых помещений в многоквартирном доме по централизованным сетям водоотведения и внутридомовым инженерным системам. В соответствии с пунктом 11 части 2 статьи 58 Федерального закона от 20 марта 2025 г. N 33-ФЗ &quot;Об общих принципах организации местного самоуправления в единой системе публичной власти&quot; вопросы организации стоков ливневых вод могут регулировать правила благоустройства территории муниципального образования. По фактам нарушений положений действующего законодательства, допущенных органами местного самоуправления по организации стоков ливневых вод, рекомендуется обратиться в органы прокуратуры. Граждане вправе, руководствуясь положениями КАС РФ, самостоятельно обжаловать в порядке </p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 19.10.26</div>
+  
+  <div class="card-tags">ЖИЛИЩЕ. ЖКХ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_546940/">&lt;Письмо&gt; Минстроя России от 14.10.2026 N 23968-ОГ/04 &lt;Об организации содержания объектов, используемых собственниками помещений в нескольких многоквартирных домах&gt;</a></h3>
+  <p class="card-annotation">Минстрой: товарищество собственников жилья не признается теплоснабжающей организацией в силу применяемого законодательства в сфере теплоснабжения Сообщается, в частности, что если на этапе строительства многоквартирного дома, в котором расположена крышная газовая котельная, строительство такой котельной по проекту на строительство предусматривало, что производство тепловой энергии на такой котельной будет осуществляться в целях теплоснабжения (горячего водоснабжения) потребителей в более чем в одном многоквартирном доме, то такая котельная отвечает признакам объекта централизованной системы теплоснабжения (горячего водоснабжения). В соответствии с положениями статьи 2 Федерального закона от 27 июля 2010 г. N 190-ФЗ &quot;О теплоснабжении&quot; (далее - Закон N 190-ФЗ) такая газовая котельная именуется источником тепловой энергии, а вместе с присоединенной к ней тепловой сетью, обеспечивающей передачу тепловой энергии нескольким объектам капитального строительства, относится к объектам теплоснабжения, обязанности по содержанию которых возложены Законом N 190-ФЗ на теплоснабжающие или теплосетевые организации. Соответственно, при строительстве такой газовой котельной, предназначенной для тепло</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 19.10.26</div>
+  
+  <div class="card-tags">ЖИЛИЩЕ. ЖКХ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_546944/">&quot;Методические рекомендации по подготовке документации на снятие с учета (изменение типа) защитных сооружений гражданской обороны&quot; (утв. МЧС России 06.10.2026 N М-КА-177)</a></h3>
+  <p class="card-annotation">Утверждены методические рекомендации по подготовке документации на снятие с учета (изменение типа) защитных сооружений гражданской обороны, под которыми понимаются убежища, противорадиационные укрытия и укрытия Методические рекомендации содержат: перечень документов, рекомендуемых к представлению в МЧС России для рассмотрения и подготовки заключения о возможности снятия с учета (изменения типа) защитного сооружения (далее - ЗС); рекомендации по обследованию, подготовке и представлению документации на снятие с учета ЗС; перечень нормативных правовых актов РФ, нормативных правовых актов МЧС России, нормативно-технических, руководящих и методических документов, регламентирующих организацию и порядок осуществления деятельности в области гражданской обороны и строительства объектов градостроительной деятельности; рекомендуемую структуру технико-экономического заключения о целесообразности изменения типа ЗС; рекомендуемую структуру об экономической целесообразности (нецелесообразности) реконструкции или ремонта ЗС. Настоящие методические рекомендации могут быть использованы федеральными органами исполнительной власти, исполнительными органами субъектов РФ, органами местного самоуправлени</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 19.10.26</div>
+  
+  <div class="card-tags">ОБОРОНА. БЕЗОПАСНОСТЬ И ОХРАНА ПРАВОПОРЯДКА</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_546912/">О внесении изменений в Постановление Правительства Российской Федерации от 12 июня 2008 г. N 450</a></h3>
+  <p class="card-annotation">Расширены полномочия Минсельхоза России Минсельхоз России наделен полномочиями: по утверждению порядка представления правообладателем земельного участка в федеральное государственное бюджетное учреждение, подведомственное Министерству, результатов проведения почвенных, геоботанических и других обследований земель сельхозназначения по заявлению правообладателя и методики исчисления размера вреда, причиненного землям сельскохозяйственного назначения, - с 1 сентября 2027 года; по установлению порядка формирования планов проведения федеральными государственными бюджетными учреждениями, подведомственными министерству, почвенных, геоботанических и других обследований земель сельскохозяйственного назначения, периодичности таких обследований, а также порядка и объема их проведения; по определению требований к содержанию плана проведения мероприятий по воспроизводству плодородия земель сельскохозяйственного назначения и порядка его составления; по согласованию документации по планировке территории, предусматривающей строительство, реконструкцию и эксплуатацию объектов капитального строительства, предназначенных для оказания услуг в сфере сельского туризма, и вносимых в нее изменений - с 1 с</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства РФ</span> · Постановление Правительства РФ · от 15.10.26 · 1349</div>
+  
+  <div class="card-tags">КОНСТИТУЦИОННЫЙ СТРОЙ. ОСНОВЫ ГОСУДАРСТВЕННОГО УПРАВЛЕНИЯ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547026/">О внесении изменения в Постановление Правительства Российской Федерации от 15 апреля 2026 г. N 416</a></h3>
+  <p class="card-annotation">Продлевается срок, в течение которого допускается изменять существенные условия строительных и проектных госконтрактов для обеспечения федеральных нужд в связи с увеличением ставки НДС Так, в случае возникновения обстоятельств, влекущих невозможность исполнения госконтрактов, предметом которых является, в частности, выполнение инженерных изысканий, работ по архитектурно-строительному проектированию, строительству и реконструкции, по соглашению сторон до 1 октября 2027 г. допускается изменение существенных условий таких контрактов в части изменения цен в пределах увеличения налоговой ставки НДС либо изменения объемов и (или) видов выполняемых работ и строительных ресурсов без увеличения цен. Речь идет о контрактах для обеспечения федеральных нужд, заключенных до 1 января 2026 г. или извещения об осуществлении которых были размещены до 1 января 2026 г., при условии что увеличенный НДС не был предусмотрен условиями таких контрактов. Ранее изменить существенные условия госконтрактов в указанном случае можно было только до 1 октября 2026 г.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства РФ</span> · Постановление Правительства РФ · от 15.10.26 · 1354</div>
+  
+  <div class="card-tags">ЗАКУПКИ ПО 44-ФЗ И 223-ФЗ</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">11</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/172055">
+  <span class="ledger-date">опубл. 19.10.26</span>
+  <span class="ledger-title">Об установлении порядка принятия решения о приостановке проведения научно-исследовательских и изыскательских работ по оценке сохранности историко-культурной ценности объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, включенного в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, или выявленного объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, работ по сохранению соответствующего объекта культурного наследия и прекращении действия разрешения на проведение таких работ.</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Минкультуры России устанавливает порядок принятия решения о приостановке научно-исследовательских и изыскательских работ по оценке сохранности объекта культурного наследия и о прекращении действия разрешения на такие работы (п. 6.10 ст. 45 73-ФЗ).</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://sozd.duma.gov.ru/bill/13747-9">
+  <span class="ledger-date">внесён 19.10.26</span>
+  <span class="ledger-title">О внесении изменения в статью 157-1 Жилищного кодекса Российской Федерации</span>
+  <span class="ledger-src">Госдума (СОЗД)</span>
+</a>
+<p class="ledger-annotation">Законопроект о внесении изменения в статью 157-1 Жилищного кодекса РФ (жилищно-коммунальная сфера). Текст в PDF не прочитан, аннотация по заголовку. <span class="badge-review">⚠ требует проверки</span></p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546934/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 16.09.2026 N 21848-ОГ/00 &lt;О квалификации персонала, осуществляющего управление многоквартирным домом, в частности персонала, ответственного за безопасную эксплуатацию лифтов&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: действующим законодательством не установлена обязанность ТСЖ, ЖСК или иному кооперативу иметь в штате квалифицированный персонал для технического обслуживания и ремонта лифтов В соответствии с частью 2.2 статьи 161 ЖК РФ в случае если управление МКД осуществляет товарищество собственников жилья (далее - ТСЖ), тогда указанное ТСЖ несет ответственность за содержание общего имущества в данном доме в соответствии с требованиями технических регламентов и установленных Правительством РФ правил содержания общего имущества в МКД. Указанное ТСЖ может оказывать услуги и (или) выполнять работы по содержанию и ремонту общего имущества в МКД своими силами или привлекать на основании договоров лиц, осуществляющих соответствующие виды деятельности. При заключении договора управления МКД с управляющей организацией указанное ТСЖ осуществляет контроль за выполнением управляющей организацией обязательств по такому договору, в том числе за оказанием всех услуг и (или) выполнением работ, обеспечивающих надлежащее содержание общего имущества в данном доме. При этом ТСЖ как лицо, управляющее МКД, несет ответственность перед собственниками помещений в МКД за указанные услуги и (или) работы. Треб</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546941/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 21.09.2026 N 58771-ДН/04 &lt;О расходах на установку общедомовых приборов учета тепловой энергии&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: возложение ресурсоснабжающей организацией расходов на установку общедомовых приборов учета тепловой энергии на управляющую организацию с последующим предъявлением управляющей организацией соответствующих расходов собственникам помещений в многоквартирном доме является правомерным при наличии предусмотренных законодательством оснований В случае принятия общим собранием собственников помещений в многоквартирном доме решения, предусматривающего установку коллективного (общедомового) прибора учета тепловой энергии управляющей организацией, такая организация осуществляет соответствующие действия на основании указанного решения общего собрания собственников помещений в многоквартирном доме и заключенного в соответствии с ним договора управления. Вместе с тем частью 9 статьи 13 Федерального закона от 23 ноября 2009 г. N 261-ФЗ &quot;Об энергосбережении и о повышении энергетической эффективности и о внесении изменений в отдельные законодательные акты Российской Федерации&quot; предусмотрена обязанность ресурсоснабжающих организаций осуществлять деятельность по установке, замене и эксплуатации приборов учета используемых энергетических ресурсов, снабжение которыми или передачу которых они о</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546935/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 08.10.2026 N 23573-ОГ/04 &lt;О внесении изменений в Реестр лицензий субъекта РФ по истечении срока действия договора управления МКД&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: при прекращении договора управления многоквартирным домом по истечении срока его действия обязанность управляющей организации продолжать управление возникает лишь в случае, если управляющая организация не передала техническую документацию, иные документы, технические средства и оборудование новому субъекту управления Частью 17 статьи 161 ЖК РФ установлено, что управляющая организация, определенная решением органа местного самоуправления в соответствии с Правилами, утвержденными Постановлением Правительства РФ от 21.12.2018 N 1616, осуществляет управление многоквартирным домом до выбора собственниками помещений способа управления или до заключения договора управления с управляющей организацией, определенной собственниками или по результатам открытого конкурса, предусмотренного частью 4 статьи 161 ЖК РФ, но не более одного года. Договор управления между такой управляющей организацией и собственниками помещений считается заключенным со дня принятия органом местного самоуправления решения об определении управляющей организации. По истечении указанного годичного срока договор управления прекращается в силу прямого указания закона, если собственники не выбрали способ управления</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546937/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 08.10.2026 N 62792-ДН/04 &lt;О порядке определения размера платы за коммунальные услуги&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: жилищное законодательство не предусматривает включение в расчет платы за коммунальные услуги, потребляемые потребителями, оплату потерь тепловой энергии по тепловым сетям, расположенным в земельном участке внутридомовых сетях, ни при расчетах за коммунальные услуги по приборам учета, ни при расчетах за коммунальные услуги исходя из нормативов потребления коммунальных услуг Учет потерь тепловой энергии в тепловых сетях потребителей регулируется положениями законодательства в сфере теплоснабжения, включая Правила коммерческого учета тепловой энергии, теплоносителя, утвержденные Постановлением Правительства РФ от 18 ноября 2013 г. N 1034 (далее - Правила N 1034). В соответствии с пунктом 111 Правил N 1034 в отношении граждан - потребителей коммунальных услуг, управляющих организаций, товариществ собственников жилья, жилищных кооперативов или иных специализированных потребительских кооперативов, осуществляющих деятельность по управлению многоквартирным домом и заключивших договор с ресурсоснабжающими организациями, порядок определения объема потребленной тепловой энергии, теплоносителя устанавливается в соответствии с жилищным законодательством. В соответствии с пунктом 1 Пра</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546938/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 09.10.2026 N 23672-ОГ/04 &lt;О долевой собственности на помещения МКД&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Даны разъяснения по некоторым вопросам оплаты жилого помещения и коммунальных услуг Сообщается, в частности, что любой из собственников долей в праве долевой собственности на помещение в МКД вправе требовать от лица, осуществляющего управление МКД, предоставления ему отдельного платежного документа на оплату содержания жилого помещения, а также от регионального оператора по капитальному ремонту общего имущества в МКД и (или) от владельца специального счета, на котором формируется фонд капитального ремонта общего имущества в МКД, отдельного платежного документа на оплату взноса на капитальный ремонт общего имущества в МКД, при этом факт наличия или отсутствия какого-либо соглашения между собственниками долей в праве долевой собственности на такое помещение не имеет значения. В то же время если собственник доли в праве долевой собственности на жилое помещение в МКД не проживает в указанном помещении, при этом в таком помещении постоянно проживают (зарегистрированы) один или несколько потребителей, тогда указанный собственник не несет обязанности по оплате коммунальных услуг за период, в течение которого в жилом помещении постоянно проживают (зарегистрированы) один или несколько потре</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546939/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 09.10.2026 N 23711-ОГ/04 &lt;О правилах осуществления деятельности по управлению МКД&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Разъяснены особенности проведения проверок органами государственного жилищного надзора Сообщается, в частности, что проверка органами государственного жилищного надзора (далее - ОГЖН) проводится в рамках лицензионного контроля и государственного жилищного надзора. Плановые проверки проводят с определенной периодичностью в зависимости от категории риска объекта контроля. Внеплановые проверки чаще всего проводятся при поступлении обращений от собственников, совета МКД или иных лиц с конкретными жалобами на неисполнение обязанностей управляющей организации и иных лиц, осуществляющих управление МКД. Также поводом для проведения проверок может стать выявление индикаторов риска. Должностные лица ОГЖН проводят документарные проверки (анализируют договоры, акты выполненных работ, отчеты управляющей организации, переписку с собственниками) и выездные (осмотр общего имущества МКД, фиксация фактического состояния МКД, опрос жителей и представителей управляющей организации). Все выявленные отклонения от условий договора и нормативных требований фиксируются в акте проверки. На его основе ОГЖН вправе выдать предписание об устранении нарушений, а при повторных или грубых нарушениях инициировать а</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546975/">
+  <span class="ledger-date">от 19.10.26</span>
+  <span class="ledger-title">&quot;Перечень документов, образующихся в процессе деятельности Федеральной службы государственной регистрации, кадастра и картографии, ее территориальных органов, публично-правовой компании &quot;Роскадастр&quot; и ее филиалов, с указанием сроков их хранения&quot; (утв. Приказом Росреестра от 10.09.2026 N П/0421/26)</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Утвержден Перечень документов, образующихся в процессе деятельности Федеральной службы государственной регистрации, кадастра и картографии, ее территориальных органов, публично-правовой компании &quot;Роскадастр&quot; и ее филиалов, с указанием сроков их хранения Перечень предназначен для использования в Росреестре, его территориальных органах, ППК &quot;Роскадастр&quot; и ее филиалах в качестве основного нормативного документа в работе Центральных экспертных комиссий Росреестра и ППК &quot;Роскадастр&quot;, экспертных комиссий территориальных органов Росреестра и филиалов ППК &quot;Роскадастр&quot; при определении сроков хранения, отборе документов на архивное хранение, в том числе в состав Архивного фонда РФ, выделении документов и дел с истекшими сроками хранения к уничтожению, а также при подготовке номенклатур дел.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_546924/">
+  <span class="ledger-date">от 15.10.26</span>
+  <span class="ledger-title">О внесении изменений в перечень движимого и недвижимого имущества, ценных бумаг, долей в уставных (складочных) капиталах российских юридических лиц и имущественных прав, в отношении которых вводится временное управление, утвержденный Указом Президента Российской Федерации от 25 апреля 2023 г. N 302</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Дополнен перечень ценных бумаг, а также долей в уставных (складочных) капиталах российских юридических лиц, в отношении которых вводится временное управление Приводится количество акций, принадлежащих Свериге Интернэшнл Холдингс АБ (Sverige International Holdings AB), Друство са ограниченом одговорносцу за производню подова &quot;Таркетт&quot;, Бачка Паланка (Drustvo sa ogranicenom odgovornoscu za proizvodnju podova &quot;Tarkett&quot;, Backa Palanka), ТАРКЕТТ (TARKETT), АО &quot;ТАРКЕТТ&quot;, передаваемых во временное управление ООО &quot;Управляющая компания &quot;ЦЕНТР КАПИТАЛ&quot;. Также определено количество долей, принадлежащих Меншен Бетайлигунгс-ГмбХ (Menshen Beteiligungs-GmbH), Георг Меншен ГмбХ и Ко. КГ (Georg Menshen GmbH &amp; Co. KG), ОНТЕКС (ONTEX), АО &quot;ТАРКЕТТ&quot;, Соноко Метал Пэкэджинг Нидерландс Инвестментс Б.В. (Sonoco Metal Packaging Netherlands Investments B.V.), передаваемых во временное управление ООО &quot;Управляющая компания &quot;ЦЕНТР КАПИТАЛ&quot;. Настоящий указ вступает в силу со дня его официального опубликования.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544699/">
+  <span class="ledger-date">от 17.09.26</span>
+  <span class="ledger-title">О внесении изменений в перечень движимого и недвижимого имущества, ценных бумаг, долей в уставных (складочных) капиталах российских юридических лиц и имущественных прав, в отношении которых вводится временное управление, утвержденный Указом Президента Российской Федерации от 25 апреля 2023 г. N 302</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Дополнен перечень ценных бумаг, а также долей в уставных (складочных) капиталах российских юридических лиц, в отношении которых вводится временное управление Приводится количество акций, принадлежащих ФМ ЛОЖИСТИК фюр Остевропа Лагерфервальтунгсгезелльшафт мбХ (F.M LOGISTIC fur Osteuropa Lagerverwaltungsgesellschaft mbH) и ФМ Ложистик Корпорэйт (FM Logistic Corporate), передаваемых во временное управление АО &quot;Л.Е.В. МЕНЕДЖМЕНТ&quot;. Также установлено количество долей в уставных (складочных) капиталах российских юридических лиц и имущественных прав, принадлежащих СОЖЕПАР (SOCIETE PAR ACTIONS SIMPLIFIEE SOGEPAR), Меелакер Б.В. (Meelacker B.V.), Батиложистик Остевроп Бетайлигунгсгезельшафт мбХ (Batilogistic Osteurop Beteiligungsgesellschaft mbH), Батиложистик (Batilogistic S.A.S.), СЕНАРИ ХОЛДИНГ ЛП (Scenari Holding LP), ГРУП АДЕО (Groupe Adeo S.A.), Сосьете де Продюи Нестле С.А. (Societe des Produits Nestle S.A.), Нестле Дойчланд А.Г. (Nestle Deutschland AG), Энжэ Консепт (NG Concept S.A.S.), передаваемых во временное управление АО &quot;Л.Е.В. МЕНЕДЖМЕНТ&quot;. Настоящий указ вступает в силу со дня его официального опубликования.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>

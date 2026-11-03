@@ -1,0 +1,558 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">26 октября 2026, 10:26 &middot; окно поиска с 21 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">271</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">9</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">9</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">9</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 7 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172210">О внесении изменений в некоторые акты Правительства Российской Федерации</a></h3>
+  <p class="card-annotation">Проект постановления Правительства РФ вносит технические правки в положение о реестре объектов капстроительства и правила субсидий регионам: после слов «контрольных точек» добавляется «и (или) значений». Цифровых систем и данных города не касается.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 23.10.26 · 01/01/10-26/00172210</div>
+  
+  <div class="card-tags">субсидии; строительство; реконструкция; федеральный бюджет; строительство объектов капитального строительства</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 7 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172207">О внесении изменений в некоторые акты Правительства Российской Федерации</a></h3>
+  <p class="card-annotation">Проект постановления Правительства РФ вносит изменения в акты об управлении имуществом на новых территориях (в связи с изменением конституционных законов). Для ДИТ предмета регулирования нет.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 23.10.26 · 01/01/10-26/00172207</div>
+  
+  <div class="card-tags">управление имуществом; воссоединенные субъекты РФ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 7 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172192">О внесении изменений в отдельные законодательные акты Российской Федерации</a></h3>
+  <p class="card-annotation">Законопроект о теплоснабжении: аренда государственных и муниципальных объектов теплоснабжения без конкурентных процедур на срок от пяти до семи лет. Ни информационных систем, ни данных не затрагивает.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 23.10.26 · 01/05/10-26/00172192</div>
+  
+  <div class="card-tags">416-ФЗ; 190-фз; передача коммунальных объектов в эффективное управление в малых и средних населенных пунктах</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 23 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172218">«Об особенностях участия в долевом строительстве гостиниц и о внесении изменений в отдельные законодательные акты Российской Федерации»</a></h3>
+  <p class="card-annotation">Законопроект об особенностях долевого строительства гостиниц: порядок привлечения средств участников строительства, права на номера и гарантии защиты их прав. Цифровой составляющей для города нет.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минэкономразвития России · опубликован 24.10.26 · 02/04/10-26/00172218</div>
+  
+  <div class="card-tags">гостиница; инвестиции; долевое строительство</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547451/">&lt;Письмо&gt; Минстроя России от 23.09.2026 N 22673-ОГ/18 &lt;О выполнении работ по архитектурно-строительному проектированию&gt;</a></h3>
+  <p class="card-annotation">Разъяснено требование о наличии членства в саморегулируемой организации при выполнении работ по архитектурно-строительному проектированию Сообщается, что указанные работы по договору, заключенному с застройщиком, техническим заказчиком, лицом, ответственным за эксплуатацию здания, сооружения, или региональным оператором (договор генподряда), могут выполнять только члены СРО в области архитектурно-строительного проектирования, если иное не установлено ГрК РФ. При этом автор произведения архитектуры, градостроительства или садово-паркового искусства имеет право на авторский контроль за разработкой документации для строительства и надзор за строительством. Застройщик самостоятельно проводит проверку соответствия выполняемых работ проектной документации либо может привлекать для этого лицо, осуществляющее подготовку проекта. Указанная проверка осуществляется в рамках строительного контроля и не является видом работ по архитектурно-строительному проектированию. Лицо, осуществляющее авторский надзор, является одновременно генподрядчиком и членом СРО, за исключением случаев, установленных ГрК РФ. Ограничений по привлечению застройщиком иного лица для выполнения своих функций по проведению</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 23.10.26</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547335/">&lt;Письмо&gt; Минстроя России от 22.09.2026 N 22549-ОГ/09 &lt;О порядке определения начальной (максимальной) цены контракта, заключаемого с единственным поставщиком при осуществлении закупок в сфере градостроительной деятельности&gt;</a></h3>
+  <p class="card-annotation">Минстрой России: при закупке услуг по инженерным изысканиям и подготовке проектной документации в сфере градостроительства НМЦК должен определяться преимущественно проектно-сметным методом на основе федеральных сметных нормативов (ФРСН) Другие методы (рыночный, затратный и т.д.) можно использовать, только если нужных нормативов в ФРСН нет.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 23.10.26</div>
+  
+  <div class="card-tags">ЗАКУПКИ ПО 44-ФЗ И 223-ФЗ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547472/">О внесении изменений в некоторые акты Правительства Российской Федерации</a></h3>
+  <p class="card-annotation">Актуализированы Положение об организации и проведении государственной экспертизы проектной документации и результатов инженерных изысканий и Положение о порядке экспертного сопровождения результатов инженерных изысканий и (или) разделов проектной документации объекта капитального строительства Указанные акты приведены в соответствие с Федеральным законом от 10.06.2026 N 180-ФЗ &quot;О внесении изменений в Федеральный закон &quot;Об объектах культурного наследия (памятниках истории и культуры) народов Российской Федерации&quot; и Градостроительный кодекс Российской Федерации&quot;. Настоящее постановление вступает в силу с 1 марта 2027 г.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства РФ</span> · Постановление Правительства РФ · от 21.10.26 · 1385 <span class="badge badge-dit-maybe">≈ для ДИТ</span></div>
+  <p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Изменены положения о госэкспертизе проектной документации и об экспертном сопровождении изысканий. Нужно проверить, затрагиваются ли электронный документооборот и информационные системы экспертизы, с которыми взаимодействуют городские ИС.</p>
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547344/">Об утверждении СП 320.1325800.2026</a></h3>
+  <p class="card-annotation">18 октября 2026 года вводится в действие свод правил СП 320.1325800.2026 &quot;Объекты размещения твердых коммунальных отходов. Правила проектирования и эксплуатации&quot; Настоящий свод правил распространяется на проектирование, эксплуатацию, реконструкцию и ликвидацию объектов капитального строительства: сооружение размещения (хранения, захоронения) отходов; здание (сооружение) утилизации отходов; здание (сооружение) обезвреживания отходов; здание (сооружение) обработки отходов; прочие объекты. Положения свода правил устанавливают допустимые решения при проектировании объектов размещения твердых коммунальных отходов. С даты введения в действие СП 320.1325800.2026 признается не подлежащим применению СП 320.1325800.2017 &quot;Полигоны для твердых коммунальных отходов. Проектирование, эксплуатация и рекультивация&quot;, утвержденный Приказом Минстроя России от 17.11.2017 N 1555/пр.</p>
+  <div class="card-meta"><span class="kind">Приказ Минстроя России</span> · Приказ Минстроя России · от 17.09.26 · 613/пр</div>
+  
+  <div class="card-tags">ЖИЛИЩЕ. ЖКХ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547345/">Об утверждении СП 127.13330.2026</a></h3>
+  <p class="card-annotation">18 октября 2026 года вводится в действие свод правил СП 127.13330.2026 &quot;Объекты размещения отходов производства. Правила проектирования (СНиП 2.01.28-85 Полигоны по обезвреживанию и захоронению токсичных промышленных отходов. Основные положения по проектированию)&quot; Настоящий свод правил распространяется на проектирование, строительство, эксплуатацию, реконструкцию, ликвидацию объектов капитального строительства: сооружение размещения (хранения, захоронения) отходов; здание (сооружение) утилизации отходов; здание (сооружение) обезвреживания отходов; здание (сооружение) обработки отходов; прочие объекты. Свод правил не распространяется на объекты размещения радиоактивных, медицинских и биологических отходов, твердых коммунальных отходов, системы подземного захоронения отходов. С даты введения в действие СП 127.13330.2026 признается не подлежащим применению СП 127.13330.2023 &quot;Объекты размещения отходов производства. Основные положения по проектированию (СНиП 2.01.28-85 Полигоны по обезвреживанию и захоронению токсичных промышленных отходов. Основные положения по проектированию)&quot;, утвержденный Приказом Минстроя России от 19.07.2023 N 511/пр.</p>
+  <div class="card-meta"><span class="kind">Приказ Минстроя России</span> · Приказ Минстроя России · от 17.09.26 · 619/пр</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">9</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/172204">
+  <span class="ledger-date">опубл. 23.10.26</span>
+  <span class="ledger-title">«О внесении изменений в приказ Министерства культуры Российской Федерации от 13 июля 2020 г. № 774 «Об утверждении формы охранного обязательства собственника или иного законного владельца объекта культурного наследия, включенного в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, и порядка его подготовки и утверждения»</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры меняет форму охранного обязательства и порядок его подготовки в связи с Федеральным законом № 180-ФЗ от 10.06.2026 об объектах культурного наследия и Градостроительном кодексе. Требования к ИС не вводятся.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="http://publication.pravo.gov.ru/document/0001202610230024">
+  <span class="ledger-date">опубл. 23.10.26</span>
+  <span class="ledger-title">Приказ Федеральной службы государственной регистрации, кадастра и картографии от 21.07.2026 № П/0344/26 &quot;Об утверждении Порядка формирования экзаменационной комиссии по приему экзамена на соответствие требованиям, предъявляемым к государственным регистраторам прав, ее полномочий и процедуры принятия экзамена на соответствие требованиям, предъявляемым к государственным регистраторам прав&quot;</span>
+  <span class="ledger-src">pravo.gov.ru</span>
+</a>
+<p class="ledger-annotation">Приказ Росреестра от 21.07.2026 № П/0344/26 утверждает порядок формирования экзаменационной комиссии (по заголовку документа, текст не разобран). Организационный акт ведомства. <span class="badge-review">⚠ требует проверки</span></p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547332/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&quot;Обзор наиболее распространенных причин, препятствующих осуществлению государственного кадастрового учета и государственной регистрации прав в отношении предприятий как имущественных комплексов и объектов недвижимости, расположенных в пределах более одного кадастрового округа (по результатам анализа решений о приостановлении за III квартал 2026 года)&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">За III квартал 2026 года проанализированы наиболее распространенные причины, препятствующие осуществлению кадастрового учета и регистрации прав в отношении предприятий как имущественных комплексов и объектов недвижимости, расположенных в разных кадастровых округах В том числе среди причин, повлекших приостановление государственной регистрации прав, выделяется представление электронного образа судебного акта (правоустанавливающего документа), не подписанного УКЭП уполномоченного лица. Судебный акт, прилагаемый к заявлению юридического лица, должен быть изготовлен исключительно либо в форме электронного документа, подписанного УКЭП судьи, вынесшего такой судебный акт, либо в форме электронного образа документа, подписанного УКЭП судьи, вынесшего такой судебный акт, или УКЭП сотрудника суда, уполномоченного заверять копии судебных актов. Копия судебного акта в электронном виде может быть предоставлена судом через информационные системы (например, &quot;ГАС Правосудие&quot;, &quot;Мой арбитр&quot;, Госуслуги и т.д.) в форматах: PDF, подписанном УКЭП с открепленной электронной подписью в отдельном файле с расширением &quot;.sig&quot; (сопровождающий файл электронной подписи), и XML-документа (для интеграции с внешни</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547340/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 19.10.2026 N 24289-ОГ/04 &lt;Об образовании земельного участка, на котором расположен многоквартирный дом&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой России: образование земельного участка под МКД и его включение в состав общего имущества собственников не требуют решения общего собрания После включения такого земельного участка в состав общего имущества у собственников возникает обязанность по его содержанию.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547341/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 19.10.2026 N 24294-ОГ/04 &lt;О расходовании денежных средств, полученных от применения повышающего коэффициента&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой России: жилищное законодательство не обязывает использовать средства от повышающего коэффициента для установки приборов учета Отмечается, что плата за коммунальную услугу, в том числе денежные средства, полученные от применения повышающего коэффициента, вносится потребителем в пользу исполнителя соответствующей коммунальной услуги. Таким исполнителем по общему правилу является лицо, осуществляющее управление МКД (управляющая организация, товарищество собственников жилья, жилищный, жилищно-строительный или иной специализированный потребительский кооператив).</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547383/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 19.10.2026 N 65107-ДН/04 &lt;О применении общедомовых приборов учета в многоквартирных домах&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: применение в расчетах стоимости коммунальной услуги показаний прибора учета, учитывающего объем потребления соответствующего коммунального ресурса в нескольких МКД, законом не предусмотрено Объем (количество) потребленных коммунальных ресурсов в каждом МКД является разным, в том числе в зависимости от параметров отдельных МКД, технического состояния внутридомовых инженерных систем, режима потребления коммунальных ресурсов, выбранного потребителями. Применение прибора учета, учитывающего объем потребления соответствующего коммунального ресурса в нескольких МКД, не позволяет учитывать такие особенности и приводит к нарушению прав потребителей в тех МКД, в которых обеспечен повышенный по сравнению с другими МКД уровень энергосбережения и энергоэффективности. При этом использование одного прибора учета на несколько МКД может повлечь возникновение необоснованных затрат у жителей таких МКД, поскольку, помимо коммунального ресурса, потребленного в МКД, указанные жители вынуждены будут оплачивать потери коммунального ресурса в сетях между домами. Таким образом, установленный для нескольких МКД прибор учета не может рассматриваться как коллективный (общедомовый) в значении, опреде</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547426/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 20.10.2026 N 24312-ОГ/04 &lt;О дате начала отопительного периода и о требованиях к температуре воздуха в помещениях многоквартирного дома&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстроем даны разъяснения относительно начала и окончания отопительного периода, а также норм температуры в жилых помещениях В письме сообщается, что в соответствии с пунктом 5 Правил предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов, утвержденных Постановлением Правительства от 6 мая 2011 г. N 354, отопительный период должен начаться не позднее чем через 5 дней после того, как среднесуточная температура наружного воздуха упадет ниже 8 градусов Цельсия, и закончиться не ранее чем через 5 дней после того, как она поднимется выше 8 градусов Цельсия. Правила N 354 императивно обязывают начать отопительный период не позднее даты, определенной в соответствии с пунктом 5 Правил N 354, и не завершать его ранее даты, определенной в соответствии с этим же положением. При этом с учетом климатических условий конкретного муниципального образования уполномоченный орган местного самоуправления вправе установить более раннюю дату начала и более позднюю дату окончания отопительного периода, если такое решение направлено на защиту прав населения. Относительно нормативной температуры воздуха в жилых помещениях отмечено, в частности, что </p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547452/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&quot;Дополнительное соглашение о внесении изменений в Федеральное отраслевое тарифное соглашение в жилищно-коммунальном хозяйстве Российской Федерации на 2023 - 2025 годы&quot; (утв. Общероссийским отраслевым объединением работодателей сферы жизнеобеспечения, Общероссийским профсоюзом работников жизнеобеспечения 05.10.2026)</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Действие Федерального отраслевого тарифного соглашения в жилищно-коммунальном хозяйстве РФ продлено до 2028 года Кроме того, уточнено понятие &quot;Сфера ЖКХ&quot; и что к ней относится, скорректированы положения, регулирующие вопросы оплаты труда и расходов на персонал, режима рабочего времени и времени отдыха, социальной защиты, и прочее. Кроме того, в новой редакции изложены некоторые приложения к Соглашению.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547323/">
+  <span class="ledger-date">от 23.10.26</span>
+  <span class="ledger-title">&lt;Информация&gt; СФР &quot;Граждане из приграничья смогут оформить пособие на детей в упрощенном режиме&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Жителям приграничья, временно отселенным в безопасные районы, выплатят ежемесячное пособие в связи с рождением и воспитанием ребенка в упрощенном порядке Мера распространяется на россиян, которые временно отселены с отдельных территорий Краснодарского края, Белгородской, Брянской, Воронежской, Курской, Ростовской областей, Крыма и Севастополя. При рассмотрении заявлений не учитывается недвижимое и движимое имущество, находящееся в собственности семьи и расположенное на территориях, с которых граждане были эвакуированы. Если на день обращения за единым пособием граждане признаны безработными, пособие может быть назначено даже в случае превышения размера среднедушевого дохода семьи над величиной прожиточного минимума (ВПМ), наличия в расчетном периоде доходов менее 8 МРОТ, а также при отсутствии доходов. Если доход на одного человека в семье превышает ВПМ, единое пособие предоставляется в размере 50% от регионального прожиточного минимума для трудоспособного населения и для детей.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>

@@ -1,0 +1,455 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">27 октября 2026, 09:38 &middot; окно поиска с 24 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">93</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">4</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">3</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">4</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-neutral">текст проекта / идёт обсуждение</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172249">Об утверждении Административного регламента Министерства строительства и жилищно-коммунального хозяйства Российской Федерации по предоставлению государственной услуги «Внесение изменений в документацию по планировке территории, предусматривающую размещение объектов федерального значения и иных объектов капитального строительства, размещение которых планируется на территориях двух и более субъектов Российской Федерации (за исключением случаев, когда полномочие на утверждение документации по планировке территории возложено на иные федеральные органы исполнительной власти, органы исполнительной власти субъектов Российской Федерации)»</a></h3>
+  <p class="card-annotation">Проект Минстроя России об утверждении административного регламента министерства по предоставлению государственной услуги. Текст проекта на портале не прикреплён, оценка сделана по заголовку. <span class="badge-review">⚠ требует проверки</span></p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 26.10.26 · 04/15/10-26/00172249 <span class="badge badge-dit-maybe">≈ для ДИТ</span></div>
+  <p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Неясно, затрагивает ли регламент электронное предоставление услуги и информационные системы; нужен разбор текста.</p>
+  <div class="card-tags">административный регламент; планировка территорий</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547593/">&quot;Перечень поручений по итогам встречи с ведущими специалистами в области пространственного развития и создания комфортной городской среды&quot; (утв. Президентом РФ 22.10.2026)</a></h3>
+  <p class="card-annotation">Президент РФ поручил обеспечить подготовку единых требований к цифровой платформе управления в сфере комплексного социально-экономического и пространственного развития населенных пунктов Также в перечне поручений: рассмотреть вопрос о реализации проектов по созданию общественных пространств и благоустройству территорий органами местного самоуправления в военных городках воинских частей и закрытых административно-территориальных образованиях, на территориях которых расположены объекты Минобороны России, госкорпораций &quot;Роскосмос&quot; и &quot;Росатом&quot;, при условии финансирования содержания этих объектов за счет средств местных бюджетов; рассмотреть вопрос о применении механизма концессионных соглашений при реализации проектов по созданию и благоустройству городских семейных парков в рамках программ формирования современной городской среды; выработать единые требования, предъявляемые к типовым модульным многофункциональным объектам социально-культурного и (или) бытового назначения, для последующего формирования реестра таких объектов.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 26.10.26 <span class="badge badge-dit-yes">✓ для ДИТ</span></div>
+  <p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Поручение подготовить единые требования к цифровой платформе управления пространственным развитием населённых пунктов; возможна связь с цифровым мастер-планированием (п. 4.3(4), 6.9 Положения 105-ПП), последствия для ДИТ нужно оценить после появления требований.</p>
+  <div class="card-tags">КОНСТИТУЦИОННЫЙ СТРОЙ. ОСНОВЫ ГОСУДАРСТВЕННОГО УПРАВЛЕНИЯ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547449/">&lt;Письмо&gt; Минстроя России от 22.09.2026 N 22546-ОГ/08 &lt;По вопросам членства в саморегулируемых организациях&gt;</a></h3>
+  <p class="card-annotation">Даны разъяснения по некоторым вопросам членства в саморегулируемых организациях в области инженерных изысканий, архитектурно-строительного проектирования, строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства Сообщается, в частности, что включение сведений о физическом лице в национальный реестр специалистов само по себе не обусловлено членством его работодателя в саморегулируемой организации. Для юридических лиц, являющихся членами саморегулируемой организации, действует требование о наличии не менее двух соответствующих специалистов по месту основной работы. На муниципальные учреждения, осуществляющие функции технического заказчика без членства в саморегулируемой организации в случаях, прямо предусмотренных ГрК РФ, указанное требование не распространяется. Использование рекомендуемых образцов исполнительной документации, предусмотренных Приказом Минстроя России от 16 мая 2023 г. N 344/пр &quot;Об утверждении состава и порядка ведения исполнительной документации при строительстве, реконструкции, капитальном ремонте объектов капитального строительства&quot;, такими лицами допускается.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 26.10.26</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547469/">О внесении изменений в некоторые акты Правительства Российской Федерации</a></h3>
+  <p class="card-annotation">До 1 сентября 2027 года продлевается срок действия постановления Правительства от 14 октября 2020 г. N 1682, которым регламентирован порядок лицензирования работ по активным воздействиям на гидрометеорологические процессы, осуществляемых юридическими лицами Также до 1 сентября 2027 года продлевается срок действия Постановления Правительства от 16 ноября 2020 г. N 1845, которым утверждено Положение о лицензировании деятельности в области гидрометеорологии и смежных с ней областях (за исключением указанной деятельности, осуществляемой в ходе инженерных изысканий, выполняемых для подготовки проектной документации, строительства, реконструкции объектов капитального строительства).</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства РФ</span> · Постановление Правительства РФ · от 21.10.26 · 1398</div>
+  
+  <div class="card-tags">ЛИЦЕНЗИРОВАНИЕ</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">3</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547600/">
+  <span class="ledger-date">от 26.10.26</span>
+  <span class="ledger-title">&quot;Перечень поручений по вопросам реализации программы социальной газификации&quot; (утв. Президентом РФ 22.10.2026)</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Правительству РФ поручено обеспечить внесение в законодательство изменений, предусматривающих распространение программы социальной газификации на сельские дома культуры Также необходимо обеспечить проведение оперативного мониторинга и анализа доступности для граждан газового оборудования, которое устанавливается в домовладениях, и услуг по его установке, в том числе для граждан, не получающих субсидий на приобретение газового оборудования и проведение в границах земельных участков работ, необходимых для технологического присоединения к газораспределительным сетям, а также достаточности средств, предусмотренных на предоставление таких субсидий. ФАС России совместно с высшими должностными лицами субъектов РФ необходимо обеспечить контроль за формированием цен на газовое оборудование, которое устанавливается в домовладениях, и услуги по его установке, а также принять меры по недопущению необоснованного роста цен на такое оборудование (услуги) и включения в проекты технологического присоединения к газораспределительным сетям необязательных работ и дополнительных услуг.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547494/">
+  <span class="ledger-date">от 26.10.26</span>
+  <span class="ledger-title">&lt;Информация&gt; ФНС России &quot;28 октября наступает единый срок уплаты авансовых платежей по налогам на имущество организаций за третий квартал&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">ФНС: не позднее 28 октября налогоплательщики-организации должны перечислить на единый налоговый счет авансовые платежи по транспортному и земельному налогам, а также налогу на имущество за третий квартал Исключение - если законами субъектов РФ не предусмотрена уплата авансовых платежей по транспортному налогу или налогу на имущество организаций либо нормативными актами представительных органов муниципальных образований (законодательных органов Москвы, Санкт-Петербурга и Севастополя, представительного органа федеральной территории &quot;Сириус&quot;) - по земельному налогу. Такую информацию можно получить на сайте ФНС России в сервисе &quot;Справочная информация о ставках и льготах по имущественным налогам&quot;. Для отдельных категорий организаций срок уплаты указанных авансовых платежей продлен Постановлением Правительства РФ от 08.05.2025 N 611 &quot;Об оказании мер поддержки лицам, осуществляющим деятельность на территории Курской области&quot;. Для распределения авансовых платежей в бюджетной системе РФ налогоплательщики-организации представляют уведомление об исчисленных суммах авансовых платежей по налогам в отношении имеющихся у них транспортных средств и объектов недвижимости. Оно направляется в налогов</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547495/">
+  <span class="ledger-date">от 12.08.26</span>
+  <span class="ledger-title">О внесении изменений в классификатор строительных ресурсов, сформированный Приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 17 ноября 2022 г. N 969/пр</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Дополнен классификатор строительных ресурсов Новые позиции включены в книгу 01 &quot;Материалы для строительных и дорожных работ&quot;.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>

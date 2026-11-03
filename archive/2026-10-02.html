@@ -1,0 +1,437 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">2 октября 2026, 09:26 &middot; окно поиска с 29 сентября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">179</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">3</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">2</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">3</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-soon">общественные обсуждения — осталось 6 дней, до 8 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171501">О внесении изменения в постановление Правительства Российской Федерации от 23 декабря 2016 г. № 1452</a></h3>
+  <p class="card-annotation">Минстрой предлагает обновить порядок мониторинга цен строительных ресурсов (ПП РФ № 1452): уточняются сроки и состав сведений, размещаемых во ФГИС ценообразования в строительстве (в т.ч. данные об оплате труда рабочего первого разряда по регионам), добавляются новые категории обязанных лиц. Пункт 27 изменений применяется с 1 января 2028 г., положения о базисно-индексном методе перестают применяться с 1 января 2030 г. Обсуждение до 8 октября.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 1.10.26 · 02/07/10-26/00171501 <span class="badge badge-dit-maybe">≈ для ДИТ</span></div>
+  <p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Меняется порядок наполнения федеральной ФГИС ЦС; нужно проверить, передают ли московские системы (сметное нормирование, АИП) данные в ФГИС ЦС и не потребуются ли доработки интеграции (п. 4.1.11 105-ПП).</p>
+  <div class="card-tags">строительные ресурсы; мониторинг цен строительных ресурсов</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 16 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171522">О внесении изменений в некоторые акты Правительства Российской Федерации</a></h3>
+  <p class="card-annotation">В типовые условия контрактов на строительство (ПП РФ № 1066) добавляется обязанность подрядчика привлекать субподрядчиков из числа МСП и СОНКО в объёме от 5 до 30 % цены контракта; параллельно ПП РФ № 708 дополняется новым случаем исключения строительных закупок из расчёта годового объёма закупок у МСП. Обсуждение до 16 октября.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 1.10.26 · 01/01/10-26/00171522</div>
+  
+  <div class="card-tags">строительство; реконструкция; типовые условия контрактов</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 16 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171504">О внесении изменений в постановление Правительства Российской Федерации от 7 марта 2023 г. № 360</a></h3>
+  <p class="card-annotation">Продлевается до 2027 г. действие особенностей применения жилищного законодательства (капремонт, управление МКД, коммунальные услуги, жилищный контроль) на территориях ДНР, ЛНР, Запорожской и Херсонской областей (ПП РФ № 360). Для Москвы прямого значения не имеет. Обсуждение до 16 октября.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 1.10.26 · 01/01/10-26/00171504</div>
+  
+  <div class="card-tags">многоквартирные дома; управление мкд; особенности применения; мкд</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">2</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://duma.mos.ru/ru/38/adopted_documents/12366">
+  <span class="ledger-date">принят 30.09.26</span>
+  <span class="ledger-title">О Законе города Москвы «О внесении изменений в Закон города Москвы от 17 января 2001 года № 3 «Об обеспечении беспрепятственного доступа инвалидов и иных маломобильных граждан к объектам социальной, транспортной и инженерной инфраструктур города Москвы» и Закон города Москвы от 26 октября 2005 года № 55 «О дополнительных мерах социальной поддержки инвалидов и других лиц с ограничениями жизнедеятельности в городе Москве»</span>
+  <span class="ledger-src">Мосгордума</span>
+</a>
+<p class="ledger-annotation">Мосгордума 30 сентября приняла закон о поправках в Закон г. Москвы № 3 о беспрепятственном доступе инвалидов и маломобильных граждан к объектам инфраструктуры и в Закон г. Москвы № 55 о мерах соцподдержки инвалидов. Опубликовано только постановление о принятии, текст самого закона в карточке отсутствует, содержание поправок нужно уточнить после подписания Мэром. <span class="badge-review">⚠ требует проверки</span></p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://duma.mos.ru/ru/38/adopted_documents/12365">
+  <span class="ledger-date">принят 30.09.26</span>
+  <span class="ledger-title">О проекте закона города Москвы «О внесении изменений в Закон города Москвы от 17 января 2001 года № 3 «Об обеспечении беспрепятственного доступа инвалидов и иных маломобильных граждан к объектам социальной, транспортной и инженерной инфраструктур города Москвы» и Закон города Москвы от 26 октября 2005 года № 55 «О дополнительных мерах социальной поддержки инвалидов и других лиц с ограничениями жизнедеятельности в городе Москве»</span>
+  <span class="ledger-src">Мосгордума</span>
+</a>
+<p class="ledger-annotation">Постановление МГД о принятии в первом чтении того же законопроекта фракции «Единая Россия» о поправках в законы г. Москвы № 3 (доступная среда) и № 55 (соцподдержка инвалидов). Текст законопроекта к постановлению не приложен; закон в целом принят тем же днём (постановление № 66). <span class="badge-review">⚠ требует проверки</span></p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+<div class="warn">Не ответили: consultant.ru-md (&lt;urlopen error EOF occurred in violation of protocol (_ssl.c:1129)&gt;), consultant.ru-fd (&lt;urlopen error EOF occurred in violation of protocol (_ssl.c:1129)&gt;)</div>
+</div>
+</div>

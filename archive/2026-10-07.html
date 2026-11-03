@@ -1,0 +1,560 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">7 октября 2026, 09:23 &middot; окно поиска с 4 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">96</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">4</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">16</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">4</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 20 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171609">О внесении изменений в Порядок ведения единого государственного реестра заключений экспертизы проектной документации объектов капитального строительства и предоставления содержащихся в нем сведений и документов, утвержденный приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 22 февраля 2018 г. № 115/пр</a></h3>
+  <p class="card-annotation">Минстрой вносит изменения в Порядок ведения единого государственного реестра заключений экспертизы проектной документации (приказ № 115/пр): уточняются отсылки к составу сведений, а сведения об экспертах, подписавших заключение, должны указываться по данным реестра. Приказ вступает в силу с 1 января 2027 года.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 5.10.26 · 02/08/10-26/00171609 <span class="badge badge-dit-maybe">≈ для ДИТ</span></div>
+  <p class="dit-action dit-action-none">Действие ДИТ: не требуется — Затрагивает федеральный информационный ресурс (ЕГРЗ) и состав передаваемых в него сведений; собственных актов ДИТ менять не требуется, но стоит проверить, затронут ли обмен данными с городскими системами.</p>
+  <div class="card-tags">размещение</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 21 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171654">О внесении изменений в приложение № 4 к приказу Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 26 мая 2026 г. № 326/пр</a></h3>
+  <p class="card-annotation">Минстрой уточняет приложение № 4 к приказу от 26 мая 2026 г. № 326/пр: меняется перечень вопросов квалификационного экзамена для лицензирования управления многоквартирными домами.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 6.10.26 · 01/02/10-26/00171654</div>
+  
+  <div class="card-tags">приказ 326/пр; деятельность по управлению многоквартирными домами</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 21 октября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171618">О внесении изменений в постановление Правительства Российской Федерации от 20 августа 2022 г. № 1469</a></h3>
+  <p class="card-annotation">Проект постановления Правительства РФ меняет Правила предоставления финансовой поддержки на переселение из аварийного жилищного фонда (постановление № 1469): вводится понятие объёма поддержки для завершения переселения из части аварийного фонда.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 6.10.26 · 01/01/10-26/00171618</div>
+  
+  <div class="card-tags">переселение граждан из аварийного жилищного фонда</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">pravo.gov.ru</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="http://publication.pravo.gov.ru/document/0001202610060006">Приказ Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 01.09.2026 № 581/пр &quot;Об утверждении Положения об осуществлении проверки достоверности и полноты сведений, представляемых гражданами, претендующими на замещение отдельных должностей на основании трудового договора, в организациях, создаваемых для выполнения задач, поставленных перед Министерством строительства и жилищно-коммунального хозяйства Российской Федерации, и работниками, замещающими должности в этих организациях, и соблюдения работниками требований к служебному поведению&quot;</a></h3>
+  <p class="card-annotation">Приказ Минстроя России от 01.09.2026 № 581/пр утверждает положение о проверке достоверности сведений, представляемых претендентами на отдельные должности в подведомственных организациях, и о соблюдении работниками требований к служебному поведению. Опубликован 6 октября 2026 г. <span class="badge-review">⚠ требует проверки</span></p>
+  <div class="card-meta"><span class="kind">принят</span> · Минстрой России · опубликован 6.10.26 · 581/пр</div>
+  
+  
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">16</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171639">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги Троицкий скит - Троицкая спасательная станция», XIX-начало XX века, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Анзер&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171637">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги Монастырь - Сергиевский скит на острове Большая Муксалма», XVI-XIX века, входящего в состав объекта культурного наследия федерального значения (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, острова Большой Соловецкий и Большая Муксалма&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171636">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги мыс Кеньга - гора Голгофа», XVIII-XIX века, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Анзер&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171635">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги Монастырь - Секирная гора - Савватьево - Исаково - Новая Сосновка», XVI-XIX века, входящего в состав объекта культурного (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171634">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги Монастырь - Реболда», XVI-XIX века, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171633">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Сооружения дороги Сергиевский скит - южный причал», XIX век, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большая Муксалма&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171632">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Секиро-Вознесенский скит», XIX-XX вв., воссоздание 2001 г., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий, Секиро-Вознесенский скит&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171631">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Свято-Сергиевский скит», XIX-нач. XX вв., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большая Муксалма, Сергеевский скит&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171630">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Свято-Андреевская пустынь», XVI-XIX вв., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Заяцкий, Свято-Андреевская пустынь&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171627">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Переговорный камень на берегу моря», 1856 год, входящего в состав объекта культурного наследия федерального значения (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171626">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Морской причал», XIX век, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий, поселок Реболда&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171625">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Макариевская пустынь (Хутор Горка)», XIX-XX вв., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий, Макарьевская пустынь&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171621">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Исаакиевская пустынь», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большой Соловецкий, скит Исаково&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171620">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Валунная дамба между островами Большой Соловецкий и Большая Муксалма», 1865 год, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага», XVI век – первая половина XX века, расположенного по адресу: Архангельская область, Приморский район, остров Большая Муксалма&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект приказа Минкультуры России об утверждении границ территории объекта культурного наследия федерального значения. Касается границ охраняемой территории конкретного памятника, цифровых систем и данных не затрагивает.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171614">
+  <span class="ledger-date">опубл. 6.10.26</span>
+  <span class="ledger-title">О мерах по обеспечению содержания и безопасной эксплуатации лифтов и лифтового оборудования в многоквартирном доме</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект постановления Правительства РФ утверждает Правила привлечения специализированных лифтовых организаций для обслуживания и ремонта лифтов в многоквартирных домах и вносит связанные изменения в акты Правительства по безопасной эксплуатации лифтов.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://sozd.duma.gov.ru/bill/4251-9">
+  <span class="ledger-date">внесён 5.10.26</span>
+  <span class="ledger-title">О внесении изменений в статью 159 Жилищного кодекса Российской Федерации</span>
+  <span class="ledger-src">Госдума (СОЗД)</span>
+</a>
+<p class="ledger-annotation">Законопроект депутатов Госдумы и сенатора вносит изменения в статью 159 Жилищного кодекса: предельная доля расходов граждан на жильё и коммунальные услуги в доходе семьи устанавливается не выше 10 процентов, а регионы обязаны давать право на субсидии при превышении этой доли.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+<div class="warn">Не ответили: consultant.ru-md (&lt;urlopen error EOF occurred in violation of protocol (_ssl.c:1129)&gt;), consultant.ru-fd (&lt;urlopen error EOF occurred in violation of protocol (_ssl.c:1129)&gt;)</div>
+</div>
+</div>

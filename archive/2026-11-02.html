@@ -1,0 +1,495 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">2 ноября 2026, 09:49 &middot; окно поиска с 30 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">117</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">4</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">8</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">4</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 30 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172401">О внесении изменений в статью 6 Федерального закона «О связи» и статью 55 Градостроительного кодекса Российской Федерации</a></h3>
+  <p class="card-annotation">Проект обязывает при строительстве и отдельных видах реконструкции многоквартирных домов закладывать инфраструктуру связи для одновременной работы как минимум трёх независимых операторов. Застройщик должен предусмотреть её в проектной документации, а ввод дома при несоответствии требованиям будет невозможен.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минцифры России · опубликован 30.10.26 · 02/04/10-26/00172401 <span class="badge badge-dit-yes">✓ для ДИТ</span></div>
+  <p class="dit-action dit-action-none">Действие ДИТ: не требуется — Следует учесть федеральные требования при оценке цифровой инфраструктуры строящихся московских МКД; изменения в актах ДИТ из текста проекта не требуются.</p>
+  <div class="card-tags">размещение; застройщик ; инфраструктура связи</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">pravo.gov.ru</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="http://publication.pravo.gov.ru/document/0001202610300022">Приказ Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 30.09.2026 № 651/пр &quot;Об установлении Порядка ведения реестра разрешений на строительство объектов капитального строительства в отношении объектов капитального строительства, сведения о которых составляют государственную тайну, выдаваемых Министерством строительства и жилищно-коммунального хозяйства Российской Федерации, и Порядка ведения реестра разрешений на ввод объектов капитального строительства в эксплуатацию в отношении объектов капитального строительства, сведения о которых составляют государственную тайну, выдаваемых Министерством строительства и жилищно-коммунального хозяйства Российской Федерации&quot;</a></h3>
+  <p class="card-annotation">Минстрой установил порядок ведения реестров разрешений на строительство и ввод в эксплуатацию объектов, сведения о которых составляют государственную тайну. Порядок применяется к разрешениям, которые выдаёт сам Минстрой России.</p>
+  <div class="card-meta"><span class="kind">принят</span> · Минстрой России · опубликован 30.10.26 · 651/пр</div>
+  
+  
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547839/">&lt;Письмо&gt; Минстроя России от 26.10.2026 N 66866-ИФ/09 &lt;Об индексах изменения сметной стоимости строительства на IV квартал 2026 года&gt;</a></h3>
+  <p class="card-annotation">Минстрой России сообщает о рекомендуемой величине индексов изменения сметной стоимости строительства на IV квартал 2026 года Приводятся в том числе индексы изменения сметной стоимости строительно-монтажных и пусконаладочных работ. Индексы для отдельных субъектов РФ будут сообщены дополнительно.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 30.10.26</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_547836/">Об установлении Порядка ведения реестра разрешений на строительство объектов капитального строительства, выдаваемых Государственной корпорацией по атомной энергии</a></h3>
+  <p class="card-annotation">Определены процедуры ведения реестров разрешений на строительство и на ввод в эксплуатацию, выдаваемых Госкорпорацией &quot;Росатом&quot; для объектов, сведения о которых составляют гостайну Реализован Федеральный закон от 04.08.2026 N 299-ФЗ &quot;О внесении изменений в Градостроительный кодекс Российской Федерации и отдельные законодательные акты Российской Федерации&quot;.</p>
+  <div class="card-meta"><span class="kind">Приказ Госкорпорации &quot;Росатом&quot;</span> · Приказ Госкорпорации &quot;Росатом&quot; · от 29.09.26 · 1/29-НПА</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">8</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/172441">
+  <span class="ledger-date">опубл. 30.10.26</span>
+  <span class="ledger-title">Об утверждении порядка предоставления разрешения на проведение научно-исследовательских и изыскательских работ по оценке сохранности историко-культурной ценности объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, включенного в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, или выявленного объекта культурного наследия (памятника истории и культуры) народов Российской Федерации и направления отказа в предоставлении такого разрешения, порядка и оснований изменения сроков проведения научно-исследовательских и изыскательских работ</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Минкультуры утверждает порядок выдачи разрешений на исследования и изыскания для оценки сохранности объектов культурного наследия, а также формы заявлений и отказов. Документ также устанавливает основания изменения сроков работ и действия разрешений; планируемый срок действия порядка — с 1 марта 2027 года до 1 марта 2033 года.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/172355">
+  <span class="ledger-date">опубл. 30.10.26</span>
+  <span class="ledger-title">Об утверждении порядка предоставления задания на проведение работ по сохранению объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, включенного в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, или выявленного объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, порядка предоставления разрешения на проведение работ по сохранению объекта культурного наследия</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Минкультуры вводит единый порядок выдачи заданий и разрешений на работы по сохранению объектов культурного наследия, включая изменение их сроков и формы документов. Одновременно признаются утратившими силу действующие приказы по этой процедуре.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547841/">
+  <span class="ledger-date">от 30.10.26</span>
+  <span class="ledger-title">&lt;Информация&gt; Росреестра &quot;Дайджест законодательных изменений в сфере земли и недвижимости. III квартал 2026&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Проанализированы изменения законодательства о земле и недвижимости за III квартал 2026 года В числе прочего отмечаются следующие нововведения: сведения о местоположении критически важных, стратегических и потенциально опасных объектов, а также зданий и сооружений, расположенных на земельных участках, имеющих особое значение для безопасности государства, могут быть исключены с публичной кадастровой карты; действие &quot;гаражной амнистии&quot; продлено до 1 сентября 2031 года; возражение на предостережение о недопустимости нарушения обязательных требований, обращение по вопросам консультирования можно направить посредством Единого портала госуслуг; заявление об исправлении ошибок в определении кадастровой стоимости можно подать посредством Единого портала госуслуг, а также в личном кабинете заявителя во ФГИС ЕЦП НСПД.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547915/">
+  <span class="ledger-date">от 30.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 20.10.2026 N 24400-ОГ/04 &lt;О владельце специального счета при заключении ТСЖ договора управления с управляющей организацией&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: заключение товариществом собственников жилья договора управления с управляющей организацией само по себе не свидетельствует об изменении выбранного собственниками способа управления многоквартирным домом Если выбранный собственниками помещений способ управления многоквартирным домом - управление товариществом собственников жилья - не изменен и товарищество не прекратило управление многоквартирным домом, заключение им договора управления с управляющей организацией не является само по себе основанием для прекращения товариществом статуса владельца специального счета.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547916/">
+  <span class="ledger-date">от 30.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 20.10.2026 N 65445-ДН/04 &lt;Об обращениях граждан в управляющую организацию&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой: жилищным законодательством установлена обязанность управляющей организации давать ответы собственникам и пользователям помещений в многоквартирном доме, а также иным лицам, независимо от организационно-правовой формы такой управляющей организации Указанная обязанность регулируется Правилами содержания общего имущества в многоквартирном доме, утвержденными Постановлением Правительства РФ от 13 августа 2006 г. N 491, Правилами предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов, утвержденными Постановлением Правительства РФ от 6 мая 2011 г. N 354, Правилами осуществления деятельности по управлению многоквартирными домами, утвержденными Постановлением Правительства РФ от 15 мая 2013 г. N 416. Дополнительно отмечается, что управляющая организация обязана хранить запрос (обращение) и копию ответа на него в течение 3 лет со дня его регистрации.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547918/">
+  <span class="ledger-date">от 30.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 23.10.2026 N 66379-ДН/04 &lt;О запросах в управляющие организации&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой России: Федеральный закон от 02.05.2006 N 59-ФЗ &quot;О порядке рассмотрения обращений граждан Российской Федерации&quot; не применяется при рассмотрении обращений лицами, осуществляющими управление МКД Эти отношения регулируются Правилами осуществления деятельности по управлению многоквартирными домами, утвержденными Постановлением Правительства РФ от 15.05.2013 N 416, с обязательным учетом законодательства о персональных данных.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547817/">
+  <span class="ledger-date">от 30.10.26</span>
+  <span class="ledger-title">Информационное сообщение Банка России от 28.10.2026 &quot;Банк России принял ряд решений по макропруденциальной политике&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Банк России установил на I квартал 2027 года макропруденциальные лимиты (МПЛ) на автокредиты со сроком возврата более 7 лет и нецелевые кредиты под залог автотранспорта со сроком возврата более 5 лет Такое решение принято в связи с тем, что номинальное увеличение срока кредитования позволяет банкам искусственно уменьшить размер платежа по кредиту и занизить значение показателя долговой нагрузки заемщика (ПДН). Это создает условия для обхода установленных ограничений на выдачу кредитов заемщикам с повышенной долговой нагрузкой. Также сообщается, что Банк России на I квартал 2027 года сохранил значения МПЛ: по ипотечным кредитам на приобретение строящегося и готового жилья в многоквартирных домах; по кредитам на индивидуальное жилищное строительство (ИЖС) и нецелевым потребительским кредитам под залог недвижимости; по необеспеченным потребительским кредитам (займам); Банк России не пересматривал значение надбавки к коэффициентам риска на прирост кредитных требований к крупным компаниям с повышенной долговой нагрузкой, макропруденциальные надбавки по корпоративным кредитным требованиям в иностранной валюте, а также значение национальной антициклической надбавки, действующей с 01.07.20</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547858/">
+  <span class="ledger-date">от 29.10.26</span>
+  <span class="ledger-title">По делу о проверке конституционности подпункта 3 пункта 1 статьи 8, абзаца четырнадцатого статьи 12, статьи 304 Гражданского кодекса Российской Федерации, части второй статьи 61 Гражданского процессуального кодекса Российской Федерации, части 5 статьи 1 и пункта 5 части 2 статьи 14 Федерального закона</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">В ситуации, когда право собственности на земельный участок оспаривается в связи с нарушением порядка его возникновения, принцип справедливости является конституционно оправданным критерием выбора способа ее разрешения с опорой на требование о добросовестном поведении, которое в силу своей универсальности распространяется на любое социальное взаимодействие между субъектами права во всех сферах Конституционный Суд признал не противоречащими Конституции РФ взаимосвязанные абзац четырнадцатый статьи 12, статью 304 ГК РФ и часть 5 статьи 1 Федерального закона &quot;О государственной регистрации недвижимости&quot;, поскольку по своему конституционно-правовому смыслу в системе действующего правового регулирования - при разрешении заявленного публично-правовым образованием (или в защиту его интересов - прокурором) иска, направленного на прекращение зарегистрированного за гражданином права собственности на приобретенный им по гражданско-правовому договору находящийся на землях населенных пунктов земельный участок (с видом разрешенного использования, предполагающим использование для личных нужд), который имеет видимые признаки его освоения правообладателем или конкретные сведения о расположении которо</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>

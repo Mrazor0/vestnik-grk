@@ -1,0 +1,475 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">22 октября 2026, 09:31 &middot; окно поиска с 19 октября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">206</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">3</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">7</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">1</span></div>
+<div class="cards"><article class="card card-moscow">
+  <div class="card-top">
+    <span class="tag tag-moscow">КонсультантПлюс (Москва)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=448995">О внесении изменений в постановление Правительства Москвы от 21 мая 2015 г. N 305-ПП</a></h3>
+  <p class="card-annotation">Внесены изменения в постановление Правительства Москвы &quot;Об утверждении Требований к архитектурно-градостроительным решениям многоквартирных жилых зданий, проектирование и строительство которых осуществляется за счет средств бюджета города Москвы&quot;. Уточнены ссылки на правовые акты: ссылка на постановление Правительства Москвы об утверждении Положения о Департаменте строительства города Москвы заменена ссылкой на постановление об утверждении Положения о Департаменте гражданского строительства города Москвы. Соответственно, в тексте постановления Департамент строительства города Москвы заменен на Департамент гражданского строительства города Москвы.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства Москвы</span> · Постановление Правительства Москвы · от 6.10.26 · 2717-ПП</div>
+  
+  <div class="card-tags">ХОЗЯЙСТВЕННАЯ ДЕЯТЕЛЬНОСТЬ</div>
+</article></div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">2</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 5 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172116">О внесении изменений в Требования к составу, содержанию и порядку оформления заключения государственной экспертизы проектной документации и (или) результатов инженерных изысканий, утвержденные приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 8 июня 2018 г. № 341/пр</a></h3>
+  <p class="card-annotation">Проект приказа Минстроя России вносит изменения в Требования к составу, содержанию и порядку оформления заключения государственной экспертизы проектной документации и результатов инженерных изысканий (приказ № 341/пр). Касается оформления заключений экспертизы. Обсуждение до 5 ноября 2026 г.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 21.10.26 · 01/01/10-26/00172116</div>
+  
+  <div class="card-tags">заключения государственной экспертизы; требования</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 5 ноября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/172115">О внесении изменений в постановление Правительства Российской Федерации от 24 июля 2026 г. № 931</a></h3>
+  <p class="card-annotation">Проект постановления Правительства РФ дополняет перечень регионов, для которых устанавливаются особенности применения жилищного законодательства (постановление № 931), Республикой Крым и Севастополем. Цифровой составляющей нет. Обсуждение до 5 ноября 2026 г.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 21.10.26 · 01/01/10-26/00172115</div>
+  
+  <div class="card-tags">дополнение перечня субъектов РФ</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">7</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="http://publication.pravo.gov.ru/document/0001202610210011">
+  <span class="ledger-date">опубл. 21.10.26</span>
+  <span class="ledger-title">Приказ Федеральной службы государственной регистрации, кадастра и картографии от 11.09.2026 № П/0425/26 &quot;О внесении изменений в Порядок принятия решения об осуществлении контроля за расходами федеральных государственных гражданских служащих Федеральной службы государственной регистрации, кадастра и картографии и ее территориальных органов, а также за расходами их супруг (супругов) и несовершеннолетних детей, утвержденный приказом Федеральной службы государственной регистрации‚ кадастра и картографии от 1 декабря 2022 г. № П/0467&quot;</span>
+  <span class="ledger-src">pravo.gov.ru</span>
+</a>
+<p class="ledger-annotation">Приказ Росреестра о внесении изменений в порядок принятия решения о контроле за расходами федеральных гражданских служащих Росреестра и их территориальных органов, их супругов и несовершеннолетних детей. Кадровый вопрос, к градостроительству и ИТ отношения не имеет.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547209/">
+  <span class="ledger-date">от 21.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 15.10.2026 N 24046-ОГ/04 &lt;Об обеспечении управляющей организацией взаимодействия с собственниками помещений в многоквартирном доме посредством многофункционального сервиса обмена информацией&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Минстрой России: обязательность использования многофункционального сервиса обмена информацией не отменяет другие способы взаимодействия с собственниками МКД, установленные законодательством Ведомство напоминает, что 1 сентября 2026 года вступило в силу Постановление Правительства РФ от 26.01.2026 N 40, которым внесены изменения в Правила осуществления деятельности по управлению многоквартирными домами. Целью изменений является улучшение коммуникации между управляющими организациями и жителями, а также повышение качества коммунальных услуг. Согласно новым требованиям управляющие организации обязаны взаимодействовать с собственниками и пользователями жилых помещений с помощью национального мессенджера МАХ. Теперь у граждан появился дополнительный канал связи: через мессенджер МАХ можно оперативно направлять обращения по вопросам управления домом (от коммунальных услуг и графиков ремонта до работоспособности общедомового имущества) и получать на них гарантированный, документально зафиксированный ответ. Это позволит повысить дисциплину в работе управляющих организаций и ускорить рассмотрение запросов.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547210/">
+  <span class="ledger-date">от 21.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 16.10.2026 N 24137-ОГ/04 &lt;О порядке расчета объема и стоимости коммунальных услуг, потребленных в помещениях в МКД при отсутствии постоянно и временно проживающих в жилом помещении граждан&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Разъяснены особенности расчета объема и стоимости коммунальных услуг, потребленных в помещениях в многоквартирном доме Рассмотрены положения Правил предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов, утвержденных Постановлением Правительства РФ от 6 мая 2011 г. N 354 (далее - Правила N 354). Отмечается, в частности, что Правила N 354 не предусматривают приравнивание нулю объема коммунальной услуги, потребленной в помещении в МКД, собственник которого не предоставил показания соответствующего ИПУ в установленные сроки. В случае непредставления потребителем показаний ИПУ за расчетный период в сроки, установленные Правилами N 354, расчет ведется исходя из рассчитанного среднемесячного объема потребления коммунального ресурса. Также предусмотрено, что при отсутствии постоянно и временно проживающих в жилом помещении граждан объем коммунальной услуги по обращению с твердыми коммунальными отходами рассчитывается с учетом количества собственников такого помещения. Неиспользование лицом жилых помещений (непроживание в данном помещении) не тождественно понятию &quot;временное отсутствие потребителя&quot;, применяемому в Правилах N 354 для п</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547211/">
+  <span class="ledger-date">от 21.10.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 16.10.2026 N 24181-ОГ/04 &lt;О границе балансовой принадлежности сетей электроснабжения многоквартирного дома&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Даны разъяснения по разграничению балансовой принадлежности между общедомовой системой электроснабжения МКД и внутриквартирной системой электроснабжения многоквартирного дома, принадлежащей собственнику соответствующей квартиры Сообщается, что границей балансовой принадлежности являются клеммы подключения ИПУ электрической энергии к питающему кабелю внутридомовой системы электроснабжения, при этом сам ИПУ является индивидуальной собственностью собственника квартиры. При этом не имеет значения, расположен ли ИПУ электрической энергии непосредственно в квартире или в электрощите на лестничной площадке. Электрощит, в котором расположены устройства, обеспечивающие подключение токоведущих элементов к ИПУ и распределение электрической энергии между помещениями в МКД, входит в состав общего имущества в МКД. Учитывая, что внутридомовая система электроснабжения входит в состав общего имущества МКД, изменение конфигурации такой сети, в том числе связанное с изменением технических параметров, состава, топологии сети, переносом точек подключения к элементам внутриквартирных сетей (то есть изменением границ балансовой принадлежности), недопустимо в отсутствие соответствующих решений общего собр</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=449008">
+  <span class="ledger-date">от 13.10.26</span>
+  <span class="ledger-title">О внесении изменений в постановление Правительства Москвы от 24 сентября 2012 г. N 507-ПП</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Внесены изменения в постановление &quot;О порядке формирования, согласования и утверждения перечней работ по благоустройству дворовых территорий, парков, скверов, компенсационному озеленению на объектах озеленения 3-й категории, расположенных в зоне жилой застройки, и капитальному ремонту многоквартирных домов&quot;. Признана утратившей силу Методика определения размера бюджетных ассигнований по административным округам и районам города Москвы в целях организации работ по благоустройству дворовых территорий, утвержденная постановлением. Также уточнено, что проекты адресных перечней дворовых территорий, финансирование работ по которым осуществляется за счет бюджетных ассигнований, предусмотренных законом города Москвы о бюджете города Москвы на очередной финансовый год и плановый период Департаменту жилищно-коммунального хозяйства города Москвы, формируются в порядке, установленном Правительством Москвы.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=449007">
+  <span class="ledger-date">от 13.10.26</span>
+  <span class="ledger-title">О внесении изменений в постановление Правительства Москвы от 3 февраля 2011 г. N 26-ПП</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Актуализировано постановление Правительства Москвы &quot;О размещении нестационарных торговых объектов, расположенных в городе Москве на земельных участках, в зданиях, строениях и сооружениях, находящихся в государственной собственности&quot;. Перечень субъектов, задействованных в процедурах размещения НТО, расширяется за счет учреждений, в ведении которых находятся соответствующие территории - дорожное хозяйство, культурно-досуговые центры и парк &quot;Яуза&quot;.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_547239/">
+  <span class="ledger-date">от 17.09.26</span>
+  <span class="ledger-title">О внесении изменений в перечень индикаторов риска нарушения обязательных требований при осуществлении федерального государственного контроля (надзора) в области обеспечения качества и безопасности зерна и продуктов переработки зерна, утвержденный Приказом Минсельхоза России от 23 мая 2023 г. N 516</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Дополнен перечень индикаторов риска нарушения обязательных требований при осуществлении федерального государственного контроля (надзора) в области обеспечения качества и безопасности зерна и продуктов переработки зерна Таким индикатором в числе прочего будет являться выявление должностным лицом Россельхознадзора в течение календарного года факта внесения контролируемым лицом в ФГИС прослеживаемости зерна и продуктов переработки зерна информации о массе зерна (нетто в килограммах), произведенного в день уборки урожая, по каждому виду зерновой культуры при одновременном соблюдении следующих условий: отношение массы зерна (нетто в килограммах), произведенного в день уборки урожая, по каждому виду зерновой культуры к площади земельного участка или его части (поля), с которого в течение календарного года собран урожай зерна (га), сведения о которых представлены контролируемым лицом в течение календарного года в ФГИС прослеживаемости зерна и продуктов переработки зерна, отклоняется от среднеарифметического значения данного отношения по всем контролируемым лицам по муниципальному образованию субъекта РФ, в границах которого контролируемым лицом в течение календарного года собран урожай зе</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>

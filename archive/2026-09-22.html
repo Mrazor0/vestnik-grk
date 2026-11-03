@@ -1,0 +1,492 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">22 сентября 2026, 09:24 &middot; окно поиска с 19 сентября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">91</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">3</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">9</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">3</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-soon">общественные обсуждения — осталось 6 дней, до 28 сентября 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/171174">Об установлении состава и содержание проектной документации на проведение научно-исследовательских и изыскательских работ по оценке сохранности историко-культурной ценности объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, включенного в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации, или выявленного объекта культурного наследия (памятника истории и культуры) народов Российской Федерации, требований к проведению таких работ и порядка их проведения</a></h3>
+  <p class="card-annotation">Минкультуры России предлагает проект приказа, устанавливающий состав и содержание проектной документации на научно-исследовательские и изыскательские работы по оценке сохранности объектов культурного наследия, а также требования и порядок проведения таких работ. Документ регулирует технические разделы проектной документации (пояснительная записка, инженерные изыскания, смета) для памятников истории и культуры. К информационным технологиям и системам отношения не имеет.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минкультуры России · опубликован 21.09.26 · 02/08/09-26/00171174</div>
+  
+  <div class="card-tags">объект культурного наследия</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_544798/">О внесении изменений в Перечень документов в области стандартизации, в результате применения которых на добровольной основе обеспечивается соблюдение требований Федерального закона от 22 июля 2008 г. N 123-ФЗ</a></h3>
+  <p class="card-annotation">Внесены изменения в перечень документов в области стандартизации, в результате применения которых на добровольной основе обеспечивается соблюдение требований Федерального закона от 22 июля 2008 г. N 123-ФЗ &quot;Технический регламент о требованиях пожарной безопасности&quot; Включены новые позиции в разделы &quot;Своды правил по пожарной безопасности общие&quot;, &quot;Своды правил по пожарной безопасности объектно-ориентированные&quot;. Также некоторые позиции указанных сводов правил изложены в новой редакции.</p>
+  <div class="card-meta"><span class="kind">Приказ Росстандарта</span> · Приказ Росстандарта · от 2.07.26 · 1302</div>
+  
+  <div class="card-tags">КОНСТИТУЦИОННЫЙ СТРОЙ. ОСНОВЫ ГОСУДАРСТВЕННОГО УПРАВЛЕНИЯ</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_544799/">О внесении изменений в Перечень документов в области стандартизации, в результате применения которых на добровольной основе обеспечивается соблюдение требований Федерального закона от 22 июля 2008 г. N 123-ФЗ</a></h3>
+  <p class="card-annotation">Внесены изменения в раздел &quot;Своды правил по пожарной безопасности общие&quot; перечня документов в области стандартизации, в результате применения которых на добровольной основе обеспечивается соблюдение требований Федерального закона от 22 июля 2008 г. N 123-ФЗ &quot;Технический регламент о требованиях пожарной безопасности&quot; Включены новые позиции, некоторые позиции изложены в новой редакции.</p>
+  <div class="card-meta"><span class="kind">Приказ Росстандарта</span> · Приказ Росстандарта · от 17.06.26 · 1182</div>
+  
+  <div class="card-tags">КОНСТИТУЦИОННЫЙ СТРОЙ. ОСНОВЫ ГОСУДАРСТВЕННОГО УПРАВЛЕНИЯ</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">9</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/171194">
+  <span class="ledger-date">опубл. 21.09.26</span>
+  <span class="ledger-title">О внесении изменений в классификатор видов разрешенного использования земельных участков, утвержденный приказом Федеральной службы государственной регистрации, кадастра и картографии от 10 ноября 2020 г. № П/0412</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Росреестр предлагает изменить классификатор видов разрешённого использования земельных участков: в примечание № 2 добавляется формулировка о размещении в здании или сооружении оборудования, обеспечивающего обработку и (или) хранение данных (то есть дата-центров) в рамках существующих видов разрешённого использования. Это земельно-имущественная классификация, а не регулирование государственных информационных систем.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544728/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 19.08.2026 N 19392-ОГ/00 &lt;О порядке действий ресурсоснабжающей организации при отказе собственников помещений в многоквартирном доме от проведения общих собраний&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Рассмотрен вопрос о порядке действий ресурсоснабжающей организации при отказе собственников, осуществляющих непосредственное управление МКД, от проведения общих собраний Сообщается, что ресурсоснабжающая организация не наделена правом созыва общего собрания собственников помещений в МКД. При непосредственном управлении МКД собственниками помещений договоры оказания услуг по содержанию и (или) выполнению работ по ремонту общего имущества с лицами, осуществляющими соответствующие виды деятельности, заключаются на основании решений общего собрания указанных собственников. Управление МКД, в отношении которого собственниками помещений не выбран способ управления таким домом в порядке, установленном ЖК РФ, или выбранный способ управления не реализован, не определена управляющая организация, осуществляется управляющей организацией, имеющей лицензию на осуществление предпринимательской деятельности по управлению МКД, определенной решением органа местного самоуправления в порядке и на условиях, которые установлены Правительством РФ. Деятельность, направленную на соблюдение гражданами, юридическими лицами, индивидуальными предпринимателями обязательных требований и правил, установленных в со</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544736/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 10.09.2026 N 56278-ДН/04 &lt;О Правилах предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Разъяснены особенности перерасчета размера платы за предоставленные коммунальные услуги Сообщается, в частности, что абзац первый пункта 61 Правил предоставления коммунальных услуг собственникам и пользователям помещений в многоквартирных домах и жилых домов, утвержденных Постановлением Правительства РФ от 06.05.2011 N 354 (далее - Правила N 354), определяет, что если в ходе проводимой исполнителем проверки достоверности предоставленных потребителем сведений о показаниях индивидуальных, общих (квартирных), комнатных приборов учета и (или) проверки их состояния исполнителем будет установлено, что прибор учета находится в исправном состоянии, в том числе пломбы на нем не повреждены, но имеются расхождения между показаниями проверяемого прибора учета, распределителей и объемом коммунального ресурса, который был предъявлен потребителем исполнителю и использован исполнителем при расчете размера платы за коммунальную услугу за предшествующий проверке расчетный период, то исполнитель обязан произвести перерасчет размера платы за коммунальную услугу и направить потребителю в сроки, установленные для оплаты коммунальных услуг за расчетный период, в котором исполнителем была проведена провер</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544737/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 16.09.2026 N 57777-ДН/04 &lt;О порядке подсчета голосов на общем собрании собственников помещений в многоквартирном доме&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Разъяснен порядок подсчета голосов на общем собрании собственников помещений в многоквартирном доме Сообщается, в частности, что согласно части 5.1 статьи 48 ЖК РФ волеизъявление собственника помещения в многоквартирном доме по каждому вопросу повестки дня выражается формулировками &quot;за&quot;, &quot;против&quot; или &quot;воздержался&quot;. Количество голосов, которым обладает каждый собственник помещения в многоквартирном доме на общем собрании собственников помещений в данном доме, пропорционально его доле в праве общей собственности на общее имущество в данном доме (часть 3 статьи 48 ЖК РФ). При определении результатов голосования юридическое значение имеет количество голосов, поданных &quot;за&quot;, по отношению к общему числу голосов собственников, принявших участие в голосовании по соответствующему вопросу. Голоса, поданные &quot;против&quot; и &quot;воздержался&quot;, в равной степени не свидетельствуют о поддержке вынесенного на голосование решения. В связи с этим при определении того, набрано ли установленное ЖК РФ количество голосов, необходимое для принятия решения, учитываются голоса &quot;за&quot; и общее количество голосов участников голосования. Само по себе сопоставление количества голосов &quot;за&quot; с количеством голосов &quot;против&quot; без </p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544758/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 17.09.2026 N 22190-ОГ/04 &lt;По вопросам оформления решений общего собрания собственников&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Разъяснены особенности формулировки вопросов повестки дня общих собраний собственников помещений в многоквартирных домах Сообщается, в частности, что формулировки вопросов повестки дня общих собраний собственников (далее - ОСС) должны отражать суть обсуждаемых на общем собрании вопросов, исключать возможность их неоднозначного толкования и обеспечивать возможность выражения волеизъявления формулировками &quot;за&quot;, &quot;против&quot; или &quot;воздержался&quot;. Объединение в одной формулировке разных вопросов допускается, если указанные вопросы взаимосвязаны и их рассмотрение по отдельности может привести к некорректным решениям ОСС. Например, если на ОСС планируется рассмотреть ряд взаимосвязанных вопросов о внесении изменений в договор управления многоквартирным домом, связанных с изменением перечня услуг и (или) работ, изменением порядка определения размера платы за содержание жилого помещения, изменением иных условий договора управления, при этом принятие решений по одним вопросам и отклонение решений по другим вопросам приведет к нарушению баланса интересов сторон договора, такие вопросы представляется целесообразным объединять в одной формулировке. Объединение в одной формулировке разных по смысловом</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544740/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 17.09.2026 N 58039-ДН/04 &lt;Об освобождении от налогообложения НДС работ (услуг) по содержанию и ремонту общего имущества в многоквартирном доме&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Изложена позиция Минстроя России по вопросу применения НДС в отношении работ (услуг) по содержанию и ремонту общего имущества в многоквартирном доме В числе прочего сообщается, что от налогообложения НДС освобождаются получаемые управляющей организацией средства платы за текущий ремонт общего имущества в многоквартирном доме в период их накапливания до начала проведения работ. При проведении таких работ от НДС освобождается стоимость оплаченных работ, выполненных соответствующими подрядными и специализированными организациями. Стоимость услуг по управлению многоквартирным домом, а также стоимость работ, услуг по содержанию и ремонту общего имущества, выполненных собственными силами управляющей организации или по цене, превышающей стоимость работ, услуг, выполненных подрядными и специализированными организациями, облагается НДС в общеустановленном порядке. Также в письме приведен порядок применения НДС организациями, применяющими упрощенную систему налогообложения.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_544733/">
+  <span class="ledger-date">от 21.09.26</span>
+  <span class="ledger-title">&lt;Информация&gt; ФНС России &quot;Как будет происходить межведомственное взаимодействие в рамках уточнения сведений о налогооблагаемой недвижимости&quot;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">ФНС: с 1 января 2027 года вступает в силу новый порядок информационного взаимодействия налоговых органов с органами публичной власти Региональные и муниципальные органы власти, заключившие с ППК &quot;Роскадастр&quot; соглашения о работах по уточнению сведений об объектах недвижимости (площадях, границах и т.п.), смогут направлять запросы по ним в налоговые органы по субъектам РФ. Налоговые органы в ответ будут предоставлять информацию о начисленных и уплаченных налогах по объектам недвижимости. Сообщается о требованиях к запросам, направляемым в налоговые органы.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="http://government.ru/docs/59921/">
+  <span class="ledger-date">опубл. 19.09.26</span>
+  <span class="ledger-title">Правительство дополнительно направит 157 млрд рублей на субсидирование льготных ипотечных программ</span>
+  <span class="ledger-src">Правительство РФ</span>
+</a>
+<p class="ledger-annotation">Правительство РФ распоряжением от 18.09.2026 № 2563-р выделяет Минфину России из резервного фонда свыше 157 млрд рублей на субсидии ДОМ.РФ для возмещения банкам недополученных доходов по льготным ипотечным программам (в том числе для семей с детьми и для Дальнего Востока и Арктики). Документ касается исключительно бюджетного финансирования жилищных программ и не затрагивает информационные технологии.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=448085">
+  <span class="ledger-date">от 27.08.26</span>
+  <span class="ledger-title">О внесении изменений в приказ Департамента финансов города Москвы от 19 ноября 2025 г. N 232ф</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Скорректированы и дополнены Перечень и коды целевых статей расходов бюджета г. Москвы, а также направления использования средств по данным целевым статьям. Введены новые целевые статьи: 05 Г 11 08800 Осуществление иных мероприятий государственными учреждениями в сфере жилищно-коммунального хозяйства; 09 Б 20 00000 Реализация мероприятий в сфере киноконцертной деятельности; 04 2 00 5250F Осуществление переданных органам государственной власти субъектов Российской Федерации полномочий Российской Федерации по оказанию мер социальной поддержки по оплате жилищно-коммунальных услуг отдельным категориям граждан за счет средств резервного фонда Правительства Российской Федерации.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>
