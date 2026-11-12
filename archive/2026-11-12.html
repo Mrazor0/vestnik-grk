@@ -1,0 +1,429 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">12 ноября 2026, 10:53 &middot; окно поиска с 9 ноября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">213</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">2</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">3</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">2</span></div>
+<div class="cards"><article class="card card-moscow">
+  <div class="card-top">
+    <span class="tag tag-moscow">КонсультантПлюс (Москва)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=449798">О внесении изменений в постановления Правительства Москвы от 25 апреля 2006 г. N 273-ПП и от 10 сентября 2013 г. N 593-ПП</a></h3>
+  <p class="card-annotation">Внесены изменения в постановления Правительства Москвы, регулирующие установление ставок арендной платы за землю и определение платы за изменение вида разрешенного использования земельных участков. С 01.03.2027 исключено требование о согласовании проектной документации на проведение работ по сохранению объекта культурного наследия с Департаментом культурного наследия города Москвы.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства Москвы</span> · Постановление Правительства Москвы · от 3.11.26 · 2958-ПП</div>
+  
+  <div class="card-tags">ГРАЖДАНСКОЕ ПРАВО</div>
+</article>
+<article class="card card-moscow">
+  <div class="card-top">
+    <span class="tag tag-moscow">КонсультантПлюс (Москва)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=449796">О внесении изменений в постановления Правительства Москвы от 25 апреля 2006 г. N 273-ПП и от 10 сентября 2013 г. N 593-ПП</a></h3>
+  <p class="card-annotation">Документ вносит изменения в два постановления Правительства Москвы - &quot;О совершенствовании порядка установления ставок арендной платы за землю в городе Москве&quot; и &quot;Об утверждении Порядка определения платы за изменение вида разрешенного использования земельного участка, находящегося в собственности физического лица или юридического лица, на другой вид такого использования, предусматривающий строительство и (или) реконструкцию объекта капитального строительства, и Перечня видов объектов капитального строительства, имеющих важное социально-экономическое значение для города Москвы, при строительстве и (или) реконструкции которых плата за изменение вида разрешенного использования земельного участка не взимается&quot;. В первом постановлении уточняется, что при расчете арендной платы учитывается нежилая часть жилого здания, но не учитывается нежилая площадь помещений иного нежилого функционального назначения. Во втором постановлении введены два порядка расчета платы за изменение вида разрешенного использования - общий и специальный для жилых зданий и гостиниц, при котором площадь объекта увеличивается не более чем на 20 процентов.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства Москвы</span> · Постановление Правительства Москвы · от 27.10.26 · 2886-ПП</div>
+  
+  <div class="card-tags">ГРАЖДАНСКОЕ ПРАВО</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">3</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/172729">
+  <span class="ledger-date">опубл. 11.11.26</span>
+  <span class="ledger-title">О внесении изменений в перечень индикаторов риска нарушения обязательных требований, используемых Федеральной службой государственной регистрации, кадастра и картографии и ее территориальными органами при осуществлении федерального государственного контроля (надзора) в области геодезии и картографии, утвержденный приказом Федеральной службы государственной регистрации, кадастра и картографии от 15 ноября 2021 г. № П/0519</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+<p class="ledger-annotation">Проект дополняет перечень индикаторов риска при федеральном надзоре за геодезической и картографической деятельностью. Среди новых оснований — расхождения между данными дистанционного зондирования и реестром геодезических пунктов, а также сведения о работниках и договорах производственного контроля.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_548641/">
+  <span class="ledger-date">от 5.10.26</span>
+  <span class="ledger-title">О внесении изменений в приказы Федеральной службы государственной регистрации, кадастра и картографии от 28 октября 2021 г. N П/0487 и от 24 ноября 2021 г. N П/0539</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Актуализирован порядок направления органом регистрации прав уведомлений при осуществлении регистрационных действий в сфере ипотеки и взаимодействия между депозитарием, осуществляющим хранение обездвиженной документарной закладной или электронной закладной, и органом регистрации прав Предусмотрены правила взаимодействия при направлении органом регистрации прав в депозитарий, осуществляющий хранение обездвиженной документарной закладной, уведомления о погашении регистрационной записи об ипотеке. Настоящий приказ вступает в силу с 1 января 2028 г.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_548630/">
+  <span class="ledger-date">от 5.10.26</span>
+  <span class="ledger-title">О внесении изменений в приложение N 5 к Приказу Федеральной налоговой службы от 04.09.2024 N ЕД-7-21/705@</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Внесены уточнения в перечень документов, в соответствии с которыми формируются направляемые в налоговые органы сведения о фактах нарушения использования земельных участков Перечень документов, в соответствии с которыми формируются сведения, указанные в подпунктах 1 - 3 пункта 18 статьи 396 НК РФ, предусмотрен приложением N 5 к Приказу ФНС России от 04.09.2024 N ЕД-7-21/705@. Уточнения коснулись оснований выдачи предписания об устранении выявленных нарушений, а также видов документов, составляемых по результатам контрольных (надзорных) мероприятий.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>
