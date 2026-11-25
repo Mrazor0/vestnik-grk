@@ -1,0 +1,642 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">25 ноября 2026, 09:59 &middot; окно поиска с 22 ноября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">173</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">9</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">22</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">0</span></div>
+<div class="empty-state">Новых проектов и актов по Москве за этот период нет.</div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">9</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 10 декабря 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173180">О признании утратившими силу некоторых актов РСФСР</a></h3>
+  
+  <div class="card-meta"><span class="kind">проект</span> · Минстрой России · опубликован 24.11.26 · 01/01/11-26/00173180</div>
+  
+  <div class="card-tags">земельные участки для культурно-просветительских и физкультурных учреждений </div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 10 декабря 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173167">Об утверждении профессионального стандарта «Специалист по организации инженерных изысканий»</a></h3>
+  
+  <div class="card-meta"><span class="kind">проект</span> · Минтруд России · опубликован 24.11.26 · 01/02/11-26/00173167</div>
+  
+  <div class="card-tags">профессиональный стандарт.</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 10 декабря 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173166">Об утверждении профессионального стандарта «Архитектор-градостроитель»</a></h3>
+  
+  <div class="card-meta"><span class="kind">проект</span> · Минтруд России · опубликован 24.11.26 · 01/02/11-26/00173166</div>
+  
+  <div class="card-tags">профессиональный стандарт.</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-neutral">текст проекта / идёт обсуждение</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173175">Административный регламент государственной услуги «Выдача разрешений на строительство при осуществлении строительства и реконструкции объектов инфраструктуры территории опережающего развития в целях обеспечения осуществления деятельности резидентов территории опережающего развития, за исключением объектов, указанных в пункте 5.1 части 1 статьи 6 Градостроительного кодекса Российской Федерации, кроме автомобильных дорог федерального значения, а также при осуществлении строительства и реконструкции объектов инфраструктуры Арктической зоны Российской Федерации, застройщиками которых являются резиденты Арктической зоны Российской Федерации или управляющая компания и которые расположены на земельных участках, предоставленных управляющей компании в соответствии со статьей 15 Федерального закона от 13 июля 2020 г. № 193-ФЗ «О государственной поддержке предпринимательской деятельности в Арктической зоне Российской Федерации»</a></h3>
+  
+  <div class="card-meta"><span class="kind">проект</span> · Минвостокразвития России · опубликован 24.11.26 · 04/15/11-26/00173175</div>
+  
+  <div class="card-tags">градостроительная деятельность; разрешение на строительство</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-neutral">текст проекта / идёт обсуждение</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173173">Административный регламент государственной услуги «Выдача разрешений на ввод объектов в эксплуатацию при осуществлении строительства и реконструкции объектов инфраструктуры территории опережающего развития в целях обеспечения осуществления деятельности резидентов территории опережающего развития, за исключением объектов, указанных в пункте 5.1 части 1 статьи 6 Градостроительного кодекса Российской Федерации, кроме автомобильных дорог федерального значения, а также при осуществлении строительства и реконструкции объектов инфраструктуры Арктической зоны Российской Федерации, застройщиками которых являются резиденты Арктической зоны Российской Федерации или управляющая компания и которые расположены на земельных участках, предоставленных управляющей компании в соответствии со статьей 15 Федерального закона от 13 июля 2020 г. № 193-ФЗ «О государственной поддержке предпринимательской деятельности в Арктической зоне Российской Федерации»</a></h3>
+  
+  <div class="card-meta"><span class="kind">проект</span> · Минвостокразвития России · опубликован 24.11.26 · 04/15/11-26/00173173</div>
+  
+  <div class="card-tags">градостроительная деятельность; разрешение на ввод в эксплуатацию</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">pravo.gov.ru</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="http://publication.pravo.gov.ru/document/0001202611240016">Приказ Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 01.10.2026 № 655/пр &quot;О внесении изменений в приказ Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 5 декабря 2019 г. № 775/пр&quot;</a></h3>
+  
+  <div class="card-meta"><span class="kind">принят</span> · Минстрой России · опубликован 24.11.26 · 655/пр</div>
+  
+  
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">pravo.gov.ru</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="http://publication.pravo.gov.ru/document/0001202611240020">Приказ Федеральной службы по экологическому, технологическому и атомному надзору от 16.10.2026 № 369 &quot;Об утверждении типовой формы соглашения саморегулируемой организации в области проверки готовности сварочного производства и Федеральной службы по экологическому, технологическому и атомному надзору об информационном взаимодействии&quot;</a></h3>
+  
+  <div class="card-meta"><span class="kind">принят</span> · Ростехнадзор · опубликован 24.11.26 · 369</div>
+  
+  
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_549455/">&quot;Положение о Комитете по стандартам по деятельности организаций, осуществляющих обмен цифровых валют, при Банке России (от 13 ноября 2026 года)&quot;</a></h3>
+  <p class="card-annotation">Определены функции и порядок работы Комитета по стандартам по деятельности организаций, осуществляющих обмен цифровых валют, при Банке России Комитет осуществляет следующие основные функции, в том числе: выработку предложений о направлениях развития деятельности организаций, осуществляющих обмен цифровых валют (далее - ОООЦВ); согласование базовых стандартов, разработанных саморегулируемыми организациями в сфере финансового рынка, объединяющими ОООЦВ.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 24.11.26</div>
+  
+  <div class="card-tags">БАНКОВСКОЕ ДЕЛО</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_549408/">&lt;Письмо&gt; Минстроя России от 23.10.2026 N 24629-ОГ/08 &lt;О применении МДС 31-1.98 &quot;Рекомендации по проектированию полов (в развитие СНиП 2.03.13-88 &quot;Полы&quot;)&quot;&gt;</a></h3>
+  <p class="card-annotation">Даны разъяснения по вопросу применения МДС 31-1.98 &quot;Рекомендации по проектированию полов (в развитие СНиП 2.03.13-88 &quot;Полы&quot;)&quot; Сообщается, что положения по проектированию полов зданий содержатся в СП 29.13330.2011 &quot;СНиП 2.03.13-88 Полы&quot;. В соответствии с пунктом 12 статьи 2 Федерального закона от 29.06.2015 N 162-ФЗ &quot;О стандартизации в Российской Федерации&quot; (далее - Федеральный закон N 162-ФЗ) данный свод правил содержит правила и общие принципы в отношении процесса проектирования указанных конструкций в целях обеспечения соблюдения требований Федерального закона от 30.12.2009 N 384-ФЗ &quot;Технический регламент о безопасности зданий и сооружений&quot; (далее - Технический регламент). МДС 31-1.98 &quot;Рекомендации по проектированию полов (в развитие СНиП 2.03.13-88 &quot;Полы&quot;)&quot; не являются документом по стандартизации в соответствии с Федеральным законом N 162-ФЗ, не входят в доказательную базу Технического регламента и могут применяться только как документы справочного характера.</p>
+  <div class="card-meta"><span class="kind">документ</span> · Российская Федерация · от 24.11.26</div>
+  
+  <div class="card-tags">СТРОИТЕЛЬСТВО</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">22</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173192">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озера Березовое», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173191">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Лобских озер», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173190">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкльтуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Двинского озера», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173189">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озера Песочное», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173188">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Архимандритских озер», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173187">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Лопушки и Варваринское», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173186">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Островное-Гагарье и Светлый Луч», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173185">
+  <span class="ledger-date">опубл. 25.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Зеркальное и Волчье», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173174">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озера Большое Куможье», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173172">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Северная Святого озера», XVI - XX вв., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173171">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Окунево и Большое Горбатое», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173170">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Восточная Святого озера», XVI - XX вв., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173169">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Варяжское и Собачье», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173168">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Исаково-Савватьевская», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173165">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Филимоновских озер», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173164">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система озер Куприяново, Остречье, Никольское, Светозеро», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173161">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Амбарного, Комсомольских и Переходного озер», XIX в., входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173157">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Проект приказа Минкультуры России &quot;Об утверждении границ территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Система Банных озёр» XIX века, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Гидросистемы Большого Соловецкого острова, всего 20 локальных систем, включая питьевые, ирригационные и судоходные каналы» XV–XX веков, входящего в состав объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения «Ансамбль Соловецкого монастыря и отдельные сооружения островов Соловецкого архипелага» XVI века — первой половины XX века, расположенного по адресу: Архангельская область, Приморский муниципальный район, посёлок Соловецкий&quot;</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://regulation.gov.ru/projects/173154">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">О включении выявленных объектов культурного наследия (памятников истории и культуры) народов Российской Федерации (объектов археологического наследия), расположенных на территории Тотемского района, Вытегорского района, г. Белозерск, г. Грязовец, г. Череповец Вологодской области, в единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации в качестве объектов культурного наследия (памятников истории и культуры) народов Российской Федерации федерального значения и утверждении границ их территорий</span>
+  <span class="ledger-src">regulation.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="http://publication.pravo.gov.ru/document/0001202611240024">
+  <span class="ledger-date">опубл. 24.11.26</span>
+  <span class="ledger-title">Приказ Министерства экономического развития Российской Федерации от 22.10.2026 № 737 &quot;О признании утратившими силу приказа Минэкономразвития России от 22 июля 2006 г. № 197 &quot;Об утверждении примерной формы договора аренды земельного участка, являющегося федеральной собственностью и предоставленного открытому акционерному обществу &quot;Российские железные дороги&quot; и внесенных в него изменений&quot;</span>
+  <span class="ledger-src">pravo.gov.ru</span>
+</a>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://storage.consultant.ru/site20/202611/23/pr_fz_231126-619-3.rtf">
+  <span class="ledger-date">от 24.11.26</span>
+  <span class="ledger-title">Проект Федерального закона N 619-9 &quot;О внесении изменений в отдельные законодательные акты Российской Федерации, приостановлении действия отдельных положений законодательных актов Российской Федерации, признании утратившими силу отдельных положений законодательных актов Российской Федерации и об установлении особенностей исполнения бюджетов бюджетной системы Российской Федерации в 2027 году&quot; (текст к третьему чтению)</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">К третьему чтению подготовлен текст законопроекта N 619-9, устанавливающего особенности исполнения бюджетов в 2027 году, а также вносящего масштабные поправки в отдельные законодательные акты Законопроект вносит изменения в том числе в бюджетное, банковское, социальное, налоговое, таможенное и жилищное законодательство. В частности: изменяется подход к расчету МРОТ (данный показатель с 1 января 2027 года предлагается утвердить в сумме 28 935 рублей в месяц); вводятся требования, касающиеся обмена данными между ФНС и Банком России; уточняются положения, регламентирующие уплату страховых взносов на &quot;травматизм&quot; (администрирование данных платежей будет осуществляться в соответствии с налоговым законодательством); устанавливаются особенности реализации товаров электронной торговли и применения в отношении таких товаров таможенных пошлин и внутренних налогов; уточняются положения о применении ККТ, в т.ч. устанавливается порядок ведения ФНС реестра систематических нарушителей законодательства о ККТ.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_549458/">
+  <span class="ledger-date">от 11.09.26</span>
+  <span class="ledger-title">О внесении изменений в приложение N 3 к Приказу Министерства науки и высшего образования Российской Федерации от 23 сентября 2025 г. N 701</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Дополнен перечень кодов классификации доходов федерального бюджета, администрирование которых осуществляется структурными подразделениями Минобрнауки России Включены новые позиции в перечень, утвержденный Минобрнауки России от 10 июня 2025 г. N 70н, в части доходов от реализации иного имущества и земельных участков, находящихся в федеральной собственности, поступающих в соответствии с решениями уполномоченного Правительством РФ межведомственного коллегиального органа.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>
