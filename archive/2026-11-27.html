@@ -1,0 +1,496 @@
+<title>Вестник ГрК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EDEFF3;
+  --surface: #FFFFFF;
+  --ink: #1B222C;
+  --ink-2: #545F6E;
+  --ink-3: #8891A0;
+  --line: #D7DCE3;
+  --federal: #33507C;
+  --federal-soft: #E7ECF4;
+  --moscow: #9C3B2E;
+  --moscow-soft: #F4E6E2;
+  --urgent: #B5330F;
+  --urgent-soft: #FBE7E1;
+  --soon: #A9660E;
+  --soon-soft: #FBEEDD;
+  --calm: #3F7A5C;
+  --calm-soft: #E4F0EA;
+  --shadow: 0 1px 2px rgba(27,34,44,0.06), 0 1px 1px rgba(27,34,44,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161C;
+    --surface: #1A212B;
+    --ink: #E7EAEF;
+    --ink-2: #A6AFBC;
+    --ink-3: #78828F;
+    --line: #2B333F;
+    --federal: #7FA0D2;
+    --federal-soft: #202B3D;
+    --moscow: #DE8570;
+    --moscow-soft: #3A2420;
+    --urgent: #F0846A;
+    --urgent-soft: #3B2320;
+    --soon: #E3A75E;
+    --soon-soft: #3A2E18;
+    --calm: #7FC79F;
+    --calm-soft: #1E3128;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161C;
+  --surface: #1A212B;
+  --ink: #E7EAEF;
+  --ink-2: #A6AFBC;
+  --ink-3: #78828F;
+  --line: #2B333F;
+  --federal: #7FA0D2;
+  --federal-soft: #202B3D;
+  --moscow: #DE8570;
+  --moscow-soft: #3A2420;
+  --urgent: #F0846A;
+  --urgent-soft: #3B2320;
+  --soon: #E3A75E;
+  --soon-soft: #3A2E18;
+  --calm: #7FC79F;
+  --calm-soft: #1E3128;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PT Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 48px 20px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--federal);
+}
+h1 {
+  font-family: "PT Serif", Georgia, serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.rule {
+  height: 3px;
+  margin: 22px 0 28px;
+  background: linear-gradient(to right, var(--ink) 0 60%, transparent 60%),
+              linear-gradient(to right, var(--ink) 0 60%, transparent 60%);
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+  background-position: top, bottom;
+  opacity: 0.55;
+}
+
+.stats { display: flex; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.stat-num {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+}
+
+section.group { margin-bottom: 44px; }
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-left: 14px;
+  border-left: 4px solid var(--line);
+  margin-bottom: 16px;
+}
+.group.is-moscow .group-head { border-left-color: var(--moscow); }
+.group.is-federal .group-head { border-left-color: var(--federal); }
+.group-head h2 {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.group-count {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tag {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-federal { color: var(--federal); }
+.tag-moscow { color: var(--moscow); }
+
+.chip {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-urgent { background: var(--urgent-soft); color: var(--urgent); font-weight: 700; }
+.chip-soon   { background: var(--soon-soft); color: var(--soon); }
+.chip-open   { background: var(--federal-soft); color: var(--federal); }
+.chip-closed { background: var(--calm-soft); color: var(--calm); }
+.chip-neutral{ background: var(--paper); color: var(--ink-3); }
+
+.card-title { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; text-wrap: balance; }
+.card-title a {
+  font-family: "PT Serif", Georgia, serif;
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ink-3), var(--ink-3));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+.card-title a:hover { color: var(--federal); background-image: linear-gradient(var(--federal), var(--federal)); }
+.card-title a:focus-visible { outline: 2px solid var(--federal); outline-offset: 3px; }
+
+.card-annotation {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+}
+
+.card-meta {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.card-tags {
+  margin-top: 8px;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+}
+
+.kind {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge-dit-yes {
+  background: var(--calm-soft);
+  color: var(--calm);
+}
+
+.badge-dit-maybe {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.badge-review {
+  display: inline-block;
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soon-soft);
+  color: var(--soon);
+  margin-left: 8px;
+}
+
+.dit-action {
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.dit-action-amend, .dit-action-new_act {
+  background: var(--moscow-soft);
+  color: var(--moscow);
+  font-weight: 600;
+}
+.dit-action-unclear {
+  background: var(--soon-soft);
+  color: var(--soon);
+}
+
+.ledger { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.ledger-item { border-bottom: 1px solid var(--line); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+.ledger-row:hover .ledger-title { color: var(--federal); }
+.ledger-date {
+  font-family: "PT Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger-title {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-src, .ledger-change {
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.ledger-change s { color: var(--ink-3); }
+.ledger-annotation {
+  margin: 0 4px 10px 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: "PT Sans", system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "PT Sans Narrow", system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer .warn { color: var(--urgent); }
+
+@media (max-width: 520px) {
+  h1 { font-size: 1.6rem; }
+  .stats { gap: 18px; }
+  .ledger-row { grid-template-columns: 92px 1fr; }
+  .ledger-src, .ledger-change { display: none; }
+}
+</style>
+<div class="page">
+<div class="eyebrow">Мониторинг НПА · градостроительство</div>
+<h1>Вестник ГрК</h1>
+<div class="masthead-meta">27 ноября 2026, 10:05 &middot; окно поиска с 24 ноября 2026</div>
+<div class="rule"></div>
+<div class="stats">
+<div><div class="stat-num">244</div><div class="stat-label">проверено документов</div></div>
+<div><div class="stat-num">4</div><div class="stat-label">новых профильных</div></div>
+<div><div class="stat-num">8</div><div class="stat-label">смежных тем</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">сменили стадию</div></div>
+</div>
+<section class="group is-moscow">
+<div class="group-head"><h2>Москва</h2><span class="group-count">2</span></div>
+<div class="cards"><article class="card card-moscow">
+  <div class="card-top">
+    <span class="tag tag-moscow">КонсультантПлюс (Москва)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=450306">Об утверждении Правил выполнения работ по текущему ремонту и (или) комплексному благоустройству территорий в городе Москве</a></h3>
+  <p class="card-annotation">Правила устанавливают требования к проведению (производству) и оценке качества выполненных работ по текущему ремонту и (или) комплексному благоустройству территорий в городе Москве. Они распространяются на земельные участки в границах города Москвы, находящиеся в федеральной собственности (в части, не урегулированной федеральным законодательством), в собственности города Москвы, муниципальной собственности, на земельные участки и земли, государственная собственность на которые не разграничена, включая расположенные на них объекты и элементы объектов благоустройства, в том числе дворовые территории, объекты дорожного хозяйства, объекты озеленения, за исключением следующих территорий: - территории проведения работ по строительству, капитальному ремонту, реконструкции объектов капитального строительства (в том числе в рамках отдельного этапа строительства); - охраняемые огороженные территории, которые оборудованы контрольно-пропускными пунктами (КПП) для контроля за проходом на режимные объекты, территории организаций с особыми пропускными режимами; - территории объекта культурного наследия, выявленного объекта культурного наследия; - территории проведения работ по размещению рекламны</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства Москвы</span> · Постановление Правительства Москвы · от 16.11.26 · 3054-ПП</div>
+  
+  <div class="card-tags">ХОЗЯЙСТВЕННАЯ ДЕЯТЕЛЬНОСТЬ</div>
+</article>
+<article class="card card-moscow">
+  <div class="card-top">
+    <span class="tag tag-moscow">КонсультантПлюс (Москва)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=450305">О внесении изменения в постановление Правительства Москвы от 13 ноября 2012 г. N 636-ПП</a></h3>
+  <p class="card-annotation">Внесены изменения в постановление Правительства Москвы &quot;О размещении и установке на территории города Москвы объектов, не являющихся объектами капитального строительства, и объектов, размещение которых осуществляется без предоставления земельных участков и установления сервитутов, публичных сервитутов&quot;. Установлено, что на территории города Москвы за счет внебюджетных источников могут размещаться объекты из сборно-разборных конструкций, в том числе с подключением к сетям электроснабжения, водопровода, канализации, теплоснабжения, предназначенные для размещения производственно-технических и транспортных комплексов в целях реализации городских задач, с возможностью обустройства плоскостных парковок.</p>
+  <div class="card-meta"><span class="kind">Постановление Правительства Москвы</span> · Постановление Правительства Москвы · от 16.11.26 · 3053-ПП</div>
+  
+  <div class="card-tags">ХОЗЯЙСТВЕННАЯ ДЕЯТЕЛЬНОСТЬ</div>
+</article></div>
+</section>
+<section class="group is-federal">
+<div class="group-head"><h2>Федеральный уровень</h2><span class="group-count">2</span></div>
+<div class="cards"><article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">regulation.gov.ru</span>
+    <span class="chip chip-open">общественные обсуждения до 14 декабря 2026</span>
+  </div>
+  <h3 class="card-title"><a href="https://regulation.gov.ru/projects/173256">Приказ Минкультуры России «Об утверждении требований к осуществлению деятельности и градостроительному регламенту в границах территории объекта культурного наследия (памятника истории и культуры) народов Российской Федерации федерального значения – достопримечательное место «Есенинская Русь – место, связанное с жизнью и творчеством поэта С.А. Есенина», конец XIX – начало XX вв., расположенного по адресу: Рязанская область, Рыбновский район, Рязанский район, г. Рязань»</a></h3>
+  <p class="card-annotation">Проект утверждает требования к деятельности и градостроительному регламенту на территории достопримечательного места «Есенинская Русь» в Рязанской области. Он разрешает отдельные виды работ при соблюдении условий охраны культурного наследия и природного ландшафта, а также отменяет прежние приказы Минкультуры по этой территории.</p>
+  <div class="card-meta"><span class="kind">проект</span> · Минкультуры России · опубликован 26.11.26 · 01/02/11-26/00173256</div>
+  
+  <div class="card-tags">ОКН</div>
+</article>
+<article class="card card-federal">
+  <div class="card-top">
+    <span class="tag tag-federal">КонсультантПлюс (РФ)</span>
+    <span class="chip chip-neutral">опубликован</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.consultant.ru/document/cons_doc_LAW_549588/">Об утверждении изменения N 3 к своду правил СП 485.1311500.2020</a></h3>
+  <p class="card-annotation">С 1 января 2027 года вступает в силу изменение N 3 к своду правил 485.1311500.2020 &quot;Системы противопожарной защиты. Установки пожаротушения автоматические. Нормы и правила проектирования&quot; Закреплено, что указанный свод правил устанавливает нормы и правила проектирования систем водяного орошения светопрозрачных конструкций (СПК). Предусмотрено, что при применении огнестойких СПК расстояние от оросителей АУП до плоскости огнестойкой конструкции, не подлежащей защите с помощью водяного орошения, должно составлять не менее 1,5 м.</p>
+  <div class="card-meta"><span class="kind">Приказ МЧС России</span> · Приказ МЧС России · от 17.11.26 · 930</div>
+  
+  <div class="card-tags">ОБОРОНА. БЕЗОПАСНОСТЬ И ОХРАНА ПРАВОПОРЯДКА</div>
+</article></div>
+</section>
+<section class="group">
+<div class="group-head"><h2>Смежные темы</h2><span class="group-count">8</span></div>
+<div class="ledger"><div class="ledger-item">
+<a class="ledger-row" href="http://publication.pravo.gov.ru/document/0001202611260023">
+  <span class="ledger-date">опубл. 26.11.26</span>
+  <span class="ledger-title">Приказ Федеральной службы государственной регистрации, кадастра и картографии от 22.10.2026 № П/0469/26 &quot;О внесении изменений в Положение о порядке формирования и работы апелляционных комиссий по обжалованию решений о приостановлении осуществления государственного кадастрового учета недвижимого имущества и (или) государственной регистрации прав на недвижимое имущество, утвержденное приказом Федеральной службы государственной регистрации, кадастра и картографии от 1 июля 2025 г. № П/0237/25&quot;</span>
+  <span class="ledger-src">pravo.gov.ru</span>
+</a>
+<p class="ledger-annotation">Приказ уточняет правила работы апелляционных комиссий Росреестра по жалобам на приостановление кадастрового учёта и регистрации прав. Комиссии смогут запрашивать документы у заявителей и кадастровых инженеров, уточнены ограничения по конфликту интересов и порядок направления запросов по электронной почте.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="http://publication.pravo.gov.ru/document/0001202611260022">
+  <span class="ledger-date">опубл. 26.11.26</span>
+  <span class="ledger-title">Приказ Федеральной службы государственной регистрации, кадастра и картографии от 07.09.2026 № П/0412/26 &quot;Об утверждении формы сведений о выявленных расположенных в границах территории выполнения комплексных кадастровых работ земельных участках, сведения о которых отсутствуют в Едином государственном реестре недвижимости и в отношении которых у использующих их лиц отсутствуют документы, устанавливающие или подтверждающие право пользования земельным участком, в том числе на условиях сервитута, либо иные документы, допускающие в соответствии с земельным законодательством использование земельных участков без предоставления или установления сервитута, а также зданиях, сооружениях, объектах незавершенного строительства, сведения о которых отсутствуют в Едином государственном реестре недвижимости и в отношении которых у использующих их лиц отсутствуют правоустанавливающие или правоудостоверяющие документы&quot;</span>
+  <span class="ledger-src">pravo.gov.ru</span>
+</a>
+<p class="ledger-annotation">Приказ утверждает форму сведений о выявленных при комплексных кадастровых работах участках и объектах недвижимости, отсутствующих в ЕГРН и не имеющих подтверждающих документов. Форма предусматривает характеристики объектов, их местоположение и координаты, а также сведения о кадастровом инженере; прежняя форма 2019 года подлежит отмене после вступления в силу соответствующего приказа Минэкономразвития.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_549571/">
+  <span class="ledger-date">от 26.11.26</span>
+  <span class="ledger-title">&quot;Перечень поручений по итогам рабочей поездки во Владивосток&quot; (утв. Президентом РФ 24.11.2026)</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Президент РФ поручил продолжить работу по расширению использования отечественных цифровых платформ электронной коммерции при закупке товаров, работ, услуг для обеспечения государственных и муниципальных нужд и распространить эту работу на сферу закупок товаров, работ, услуг отдельными видами юридических лиц Необходимо внести изменения в законодательство РФ, направленные на расширение такого использования цифровых платформ, включая сокращение сроков проведения закупочных процедур, упрощение взаимодействия между заказчиками и поставщиками (подрядчиками, исполнителями), уменьшение издержек, связанных с осуществлением закупок, оптимизацию логистики при доставке товаров (выполнении работ, оказании услуг). Также в перечне поручений: при участии исполнительных органов субъектов РФ, которые входят в состав Дальневосточного федерального округа и в которых установлена выплата в размере 1 млн рублей семьям, имеющим детей, при рождении третьего ребенка или последующих детей на погашение обязательств по ипотечным жилищным кредитам (займам), предусмотреть продление срока действия этой меры поддержки до 2030 года; обеспечить устранение правовой неопределенности, возникающей при одновременном прим</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/document/cons_doc_LAW_549589/">
+  <span class="ledger-date">от 26.11.26</span>
+  <span class="ledger-title">&lt;Письмо&gt; Минстроя России от 22.07.2026 N 45015-АЕ/04 &lt;По вопросу исполнения требований банковского и жилищного законодательства при приеме платежей за жилищно-коммунальные услуги с использованием цифрового рубля&gt;</span>
+  <span class="ledger-src">КонсультантПлюс (РФ)</span>
+</a>
+<p class="ledger-annotation">Рассмотрены вопросы о приеме коммунальных платежей с использованием цифрового рубля В частности, отмечается, что обязанность принимать цифровой рубль распространяется на исполнителей ЖКУ, но не распространяется на уплату взносов на капитальный ремонт и взносов членов ТСЖ/ЖСК, установленных органами управления товариществ/кооперативов.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://sozd.duma.gov.ru/bill/43245-9">
+  <span class="ledger-date">внесён 25.11.26</span>
+  <span class="ledger-title">О внесении изменений в Жилищный кодекс Российской Федерации</span>
+  <span class="ledger-src">Госдума (СОЗД)</span>
+</a>
+<p class="ledger-annotation">Законопроект вводит государственную социальную аренду жилья для молодых семей: региональные операторы будут снимать квартиры у собственников и предоставлять их семьям по договорам найма. Предусмотрены региональный реестр участников, подача заявлений в электронной форме, межведомственный обмен сведениями и публикация обезличенной статистики. <span class="badge badge-dit-maybe">≈ для ДИТ</span></p>
+<p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Проект требует вести региональный реестр и принимать электронные заявления, но не определяет, будет ли это городская информационная система и кто отвечает за её создание и сопровождение.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=450313">
+  <span class="ledger-date">от 19.11.26</span>
+  <span class="ledger-title">О внесении изменения в постановление Правительства Москвы от 25 апреля 2006 г. N 273-ПП</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Внесены изменения в постановление Правительства Москвы &quot;О совершенствовании порядка установления ставок арендной платы за землю в городе Москве&quot;. Расширен перечень получателей льготы на плату за аренду земельных участков за счет федеральных органов исполнительной власти, имеющих в безвозмездном пользовании помещения в здании на арендуемом участке.</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=450318">
+  <span class="ledger-date">от 16.11.26</span>
+  <span class="ledger-title">О мерах, направленных на соблюдение установленного запрета на осуществление майнинга цифровой валюты (в том числе участие в майнинг-пуле) на территории города Москвы</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Правительством создана Межведомственная комиссия по выявлению признаков возможного осуществления деятельности по майнингу цифровой валюты (в том числе участию в майнинг-пуле) на территории города Москвы. Комиссия формируется в составе председателя, заместителя председателя, членов комиссии и ответственного секретаря. Председателем Межведомственной комиссии является министр Правительства Москвы, начальник Главного контрольного управления города Москвы. В состав комиссии входят представители Департамента экономической политики и развития города Москвы, Государственной инспекции по контролю за использованием объектов недвижимости города Москвы, Департамента информационных технологий города Москвы, Департамента жилищно-коммунального хозяйства города Москвы, Департамента региональной безопасности и противодействия коррупции города Москвы, публичного акционерного общества &quot;Россети Московский регион&quot; (по согласованию), акционерного общества &quot;Объединенная энергетическая компания&quot; (по согласованию), акционерного общества &quot;Мосэнергосбыт&quot; (по согласованию), а также представители иных органов исполнительной власти города Москвы и организаций по решению председателя Межведомственной комиссии. Т</p>
+</div>
+<div class="ledger-item">
+<a class="ledger-row" href="https://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=MLAW;n=450304">
+  <span class="ledger-date">от 27.10.26</span>
+  <span class="ledger-title">О внесении изменений в приказ Департамента жилищно-коммунального хозяйства города Москвы и Департамента природопользования и охраны окружающей среды города Москвы от 20 февраля 2021 г. N 01-01-13-31/21/05-09-34/21</span>
+  <span class="ledger-src">КонсультантПлюс (Москва)</span>
+</a>
+<p class="ledger-annotation">Внесены изменения в приказ Департамента жилищно-коммунального хозяйства города Москвы и Департамента природопользования и охраны окружающей среды города Москвы &quot;Об утверждении Порядка организации деятельности приютов для животных на территории города Москвы&quot;. Уточнены понятия приюта для животных и для диких животных (центра реабилитации), а также введено определение частного приюта. Расширены основания приема животных - допускается размещение животных из пунктов временного содержания на основании договора с владельцем, а частные приюты дополнительно принимают животных из стационаров ветеринарных клиник. Помимо этого, скорректированы требования к ведению электронных карточек учета животных в ИС ВетАС, к проведению стерилизации, к нормам кормления взрослых животных и молодняка, к отделке помещений ветеринарного пункта, а также к запрету умерщвления животных в приютах, за исключением прекращения непереносимых физических страданий нежизнеспособных животных. <span class="badge badge-dit-maybe">≈ для ДИТ</span></p>
+<p class="dit-action dit-action-unclear">Действие ДИТ: требует уточнения — Изменяются электронные карточки животных в ИС «ВетАС»; нужно уточнить, относится ли сопровождение этой системы к полномочиям ДИТ.</p>
+</div></div>
+</section>
+<div class="footer">
+<div>Источники: regulation.gov.ru, duma.mos.ru, publication.pravo.gov.ru, sozd.duma.gov.ru, government.ru. mos.ru проверяется отдельно, вручную.</div>
+</div>
+</div>
